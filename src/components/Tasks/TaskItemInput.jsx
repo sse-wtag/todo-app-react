@@ -1,12 +1,45 @@
 import Button from "@components/ui/form/button";
+import { addTask } from "@features/task/taskSlice";
+import PropTypes from "prop-types";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 
-function TaskItemInput() {
+function TaskItemInput({ onTaskCreation }) {
+    const dispatch = useDispatch();
+    const [title, setTitle] = useState("");
+
+    const resetInput = () => {
+        setTitle("");
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (title === "") {
+            return;
+        }
+
+        const newTask = {
+            id: Date.now().toString(),
+            title: title.trim(),
+            createdAt: new Date().toISOString(),
+            isCompleted: false,
+        };
+
+        dispatch(addTask(newTask));
+        resetInput();
+        onTaskCreation();
+    };
+
     return (
-        <div className="task-card-item">
-            <input type="text" />
-            <Button>Add task</Button>
-        </div>
+        <form className="task-card-item" onSubmit={handleSubmit}>
+            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} autoFocus required />
+            <Button type="submit">Add task</Button>
+        </form>
     );
 }
+
+TaskItemInput.propTypes = {
+    onTaskCreation: PropTypes.func.isRequired,
+};
 
 export default TaskItemInput;
