@@ -1,5 +1,6 @@
 import Button from "@components/ui/form/button";
 import { addTask } from "@features/task/taskSlice";
+import { sanitizeAndTrim } from "@utils/sanitizeAndTrim";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -14,13 +15,17 @@ function TaskItemInput({ onTaskCreation }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (title === "") {
+
+        const cleanTitle = sanitizeAndTrim(title);
+
+        if (cleanTitle === "") {
+            resetInput();
             return;
         }
 
         const newTask = {
             id: Date.now().toString(),
-            title: title.trim(),
+            title: cleanTitle,
             createdAt: new Date().toISOString(),
             isCompleted: false,
         };
