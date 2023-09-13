@@ -1,3 +1,4 @@
+import TextArea from "@components/ui/form/TextArea";
 import Button from "@components/ui/form/button";
 import { addTask } from "@features/task/taskSlice";
 import { sanitizeAndTrim } from "@utils/sanitizeAndTrim";
@@ -37,7 +38,7 @@ function TaskItemInput({ onTaskCreation }) {
 
     return (
         <form className="task-card-item" onSubmit={handleSubmit}>
-            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} autoFocus required />
+            <TextArea value={title} onChange={(e) => setTitle(e.target.value)} autoFocus required />
             <Button type="submit">Add task</Button>
         </form>
     );

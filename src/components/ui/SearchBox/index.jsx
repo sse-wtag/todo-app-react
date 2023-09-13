@@ -1,4 +1,4 @@
-import TextInput from "./form/TextInput";
+import TextInput from "@components/ui/form/TextInput";
 
 function SearchBox() {
     return (
