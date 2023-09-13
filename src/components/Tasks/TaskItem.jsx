@@ -1,4 +1,4 @@
-import { formatDate } from "@utils/FormatDate.js";
+import { formatDate } from "@utils/formatDate.js";
 import PropTypes from "prop-types";
 import "./style.css";
 

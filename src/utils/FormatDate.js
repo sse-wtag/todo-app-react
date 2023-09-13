@@ -1,14 +1,23 @@
 export const formatDate = (date, config = {}) => {
-    const { day, month, year, separator } = config;
+    const { day = "2-digit", month = "2-digit", year = "numeric", separator = ".", locale = "en-GB" } = config;
+    const GENERAL_ERROR_MESSAGE = "Invalid date input";
 
-    const newDate = new Date(date);
-    const formattedDate = newDate
-        .toLocaleDateString("en-GB", {
-            day: day || "2-digit",
-            month: month || "2-digit",
-            year: year || "numeric",
-        })
-        .replace(/\//g, separator || ".");
+    try {
+        if (!date) {
+            throw new Error(GENERAL_ERROR_MESSAGE);
+        }
 
-    return formattedDate;
+        const dateObject = new Date(date);
+
+        if (isNaN(dateObject.getTime())) {
+            throw new Error(GENERAL_ERROR_MESSAGE);
+        }
+
+        const options = { day, month, year };
+        const formattedDate = dateObject.toLocaleDateString(locale, options).replace(/\//g, separator);
+
+        return formattedDate;
+    } catch (error) {
+        return error.message;
+    }
 };
