@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import "./style.css";
+import "./style.scss";
 
 function TextInput({ type = "text", ...rest }) {
     return <input type={type} {...rest} />;

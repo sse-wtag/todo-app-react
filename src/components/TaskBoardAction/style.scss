@@ -1,12 +1,12 @@
-.task-board-action-wrapper {
+.task-board-action {
     align-items: center;
     display: flex;
     justify-content: space-between;
     gap: 0.75rem;
     margin-top: 2rem;
-}
 
-.task-board-filter {
-    display: flex;
-    gap: 0.5rem;
+    &__filter {
+        display: flex;
+        gap: 0.5rem;
+    }
 }

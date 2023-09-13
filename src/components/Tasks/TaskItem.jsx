@@ -1,12 +1,12 @@
 import { formatDate } from "@utils/formatDate.js";
 import PropTypes from "prop-types";
-import "./style.css";
+import "./style.scss";
 
 function TaskItem({ task = {} }) {
     const { title, createdAt } = task;
 
     return (
-        <div className="task-card-item">
+        <div className="task-list__item">
             <h2>{title}</h2>
             <span>Created At: {formatDate(createdAt)}</span>
         </div>

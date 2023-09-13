@@ -1,12 +1,12 @@
 import SearchBox from "@components/ui/SearchBox";
-import "@styles/navbar.css";
+import "@styles/navbar.scss";
 
 function Navbar() {
     return (
         <nav className="nav">
-            <div className="nav-container">
+            <div className="nav__container">
                 <a href="#">
-                    <span className="logo-text">Todos</span>
+                    <span>Todos</span>
                 </a>
                 <SearchBox />
             </div>

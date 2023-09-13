@@ -1,0 +1,13 @@
+.task-board {
+    margin-top: 3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+
+    &__heading {
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 2rem;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+    }
+}

@@ -1,7 +1,7 @@
 import TaskBoardAction from "@components/TaskBoardAction";
 import Tasks from "@components/Tasks";
 import { useState } from "react";
-import "./style.css";
+import "./style.scss";
 
 function TaskBoard() {
     const [isTaskCreating, setIsTaskCreating] = useState(false);
@@ -11,8 +11,8 @@ function TaskBoard() {
     };
 
     return (
-        <div className="task-board-container">
-            <h1 className="task-board-heading">Add Tasks</h1>
+        <div className="task-board">
+            <h1 className="task-board__heading">Add Tasks</h1>
             <TaskBoardAction onTaskCreation={toggleCreation} />
             <Tasks isTaskCreating={isTaskCreating} onTaskCreation={toggleCreation} />
         </div>

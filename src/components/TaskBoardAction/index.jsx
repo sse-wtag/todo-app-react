@@ -1,12 +1,12 @@
 import Button from "@components/ui/form/button";
 import PropTypes from "prop-types";
-import "./style.css";
+import "./style.scss";
 
 function TaskBoardAction({ onTaskCreation }) {
     return (
-        <section className="task-board-action-wrapper">
+        <section className="task-board-action">
             <Button onClick={onTaskCreation}>Create</Button>
-            <div className="task-board-filter">
+            <div className="task-board-action__filter">
                 <Button>All</Button>
                 <Button>Incomplete</Button>
                 <Button>Complete</Button>
