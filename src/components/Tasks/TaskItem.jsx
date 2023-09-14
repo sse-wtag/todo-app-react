@@ -1,4 +1,5 @@
-import Button from "@components/ui/form/button";
+import IconButton from "@components/ui/form/IconButton";
+import TrashIcon from "@components/ui/icons/TrashIcon";
 import { deleteTask } from "@features/task/taskSlice";
 import { formatDate } from "@utils/formatDate.js";
 import PropTypes from "prop-types";
@@ -18,7 +19,9 @@ function TaskItem({ task = {} }) {
             <h2>{title}</h2>
             <span>Created At: {formatDate(createdAt)}</span>
             <div className="task-list__action">
-                <Button onClick={handleDelete}>Delete</Button>
+                <IconButton onClick={handleDelete}>
+                    <TrashIcon />
+                </IconButton>
             </div>
         </div>
     );
