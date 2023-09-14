@@ -23,7 +23,7 @@ function TaskItem({ task = {} }) {
 
     return (
         <div className="task-list__item">
-            <h2 className={isCompleted && "task-list__item--completed"}>{title}</h2>
+            <h2 className={isCompleted ? "task-list__item--completed" : ""}>{title}</h2>
             <span>Created At: {formatDate(createdAt)}</span>
             <div className="task-list__action">
                 {!isCompleted && (
