@@ -27,6 +27,7 @@ const taskSlice = createSlice({
             }
 
             state.tasks[taskIndexToMarkAsDone].isCompleted = true;
+            state.tasks[taskIndexToMarkAsDone].completedAt = new Date().toISOString();
         },
     },
 });
