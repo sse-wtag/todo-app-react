@@ -24,5 +24,10 @@
             margin-bottom: 1rem;
             text-align: start;
         }
+
+        &--completed {
+            text-decoration: line-through;
+            color: #0bc375;
+        }
     }
 }
