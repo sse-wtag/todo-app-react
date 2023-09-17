@@ -1,9 +1,9 @@
+import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { formatDate } from "@utils/formatDate.js";
 import IconButton from "@components/ui/form/IconButton";
 import TrashIcon from "@components/ui/icons/TrashIcon";
 import { deleteTask } from "@features/task/taskSlice";
-import { formatDate } from "@utils/formatDate.js";
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
 import "./style.scss";
 
 function TaskItem({ task = {} }) {
