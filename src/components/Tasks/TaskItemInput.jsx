@@ -10,6 +10,10 @@ function TaskItemInput({ onTaskCreation }) {
     const dispatch = useDispatch();
     const [title, setTitle] = useState("");
 
+    const handleTitleChange = (event) => {
+        setTitle(event.target.value);
+    };
+
     const resetInput = () => {
         setTitle("");
     };
@@ -38,7 +42,7 @@ function TaskItemInput({ onTaskCreation }) {
 
     return (
         <form className="task-list__item" onSubmit={handleSubmit}>
-            <TextArea value={title} onChange={(e) => setTitle(e.target.value)} autoFocus required />
+            <TextArea value={title} onChange={handleTitleChange} autoFocus required />
             <Button type="submit">Add task</Button>
         </form>
     );
