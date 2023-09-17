@@ -1,10 +1,10 @@
-import TextArea from "@components/ui/form/TextArea";
-import Button from "@components/ui/form/button";
-import { addTask } from "@features/task/taskSlice";
-import { sanitizeAndTrim } from "@utils/sanitizeAndTrim";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { addTask } from "@features/task/taskSlice";
+import { sanitizeAndTrim } from "@utils/sanitizeAndTrim";
+import Button from "@components/ui/form/button";
+import TextArea from "@components/ui/form/TextArea";
 
 function TaskItemInput({ onTaskCreation }) {
     const dispatch = useDispatch();
