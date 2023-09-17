@@ -10,7 +10,7 @@ function Button({ children, className, type = "button", ...rest }) {
 }
 
 Button.propTypes = {
-    children: PropTypes.node.isRequired || PropTypes.string.isRequired,
+    children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
     type: PropTypes.string,
     className: PropTypes.string,
 };

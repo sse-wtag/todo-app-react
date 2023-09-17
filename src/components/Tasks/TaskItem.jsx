@@ -16,7 +16,7 @@ function TaskItem({ task = {} }) {
 
     return (
         <div className="task-list__item">
-            <h2>{title}</h2>
+            <h2 className="task-list__item--title">{title}</h2>
             <span>Created At: {formatDate(createdAt)}</span>
             <div className="task-list__action">
                 <IconButton onClick={handleDelete}>
@@ -28,7 +28,10 @@ function TaskItem({ task = {} }) {
 }
 
 TaskItem.propTypes = {
-    task: PropTypes.object.isRequired,
+    task: PropTypes.shape({
+        title: PropTypes.string,
+        createdAt: PropTypes.string,
+    }),
 };
 
 export default TaskItem;

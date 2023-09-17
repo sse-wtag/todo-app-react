@@ -1,9 +1,11 @@
 import TextInput from "@components/ui/form/TextInput";
 
 function SearchBox() {
+    const PLACEHOLDER = "Search...";
+
     return (
         <form>
-            <TextInput placeholder="Search..." />
+            <TextInput placeholder={PLACEHOLDER} />
         </form>
     );
 }
