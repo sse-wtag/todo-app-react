@@ -1,7 +1,7 @@
 @use "_base";
 
 .nav {
-    background-color: white;
+    background-color: base.$bg-white;
     border-bottom: 1px solid base.$secondary-color;
 
     &__container {

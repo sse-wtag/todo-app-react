@@ -1,6 +1,8 @@
+@use "@styles/_base.scss";
+
 input {
-    background-color: rgb(249 250 251);
-    border: 1px solid rgb(209 213 219);
+    background-color: base.$bg-gray-50;
+    border: 1px solid base.$bg-gray-300;
     border-radius: 0.5rem;
     display: block;
     font-size: 0.875rem;
