@@ -1,5 +1,5 @@
-import Button from "@components/ui/form/button";
 import PropTypes from "prop-types";
+import Button from "@components/ui/form/button";
 import "./style.scss";
 
 function TaskBoardAction({ onTaskCreation }) {

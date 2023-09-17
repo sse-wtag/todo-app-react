@@ -1,8 +1,7 @@
 import IconButton from "@components/ui/form/IconButton";
 import CheckIcon from "@components/ui/icons/CheckIcon";
 import TrashIcon from "@components/ui/icons/TrashIcon";
-import { deleteTask, markAsDone } from "@features/task/taskSlice";
-import { compareDates } from "@utils/compareDates";
+import { deleteTask } from "@features/task/taskSlice";
 import { formatDate } from "@utils/formatDate.js";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
@@ -24,6 +23,7 @@ function TaskItem({ task = {} }) {
     return (
         <div className="task-list__item">
             <h2 className={isCompleted ? "task-list__item--completed" : ""}>{title}</h2>
+            <h2 className="task-list__item--title">{title}</h2>
             <span>Created At: {formatDate(createdAt)}</span>
             <div className="task-list__action">
                 {!isCompleted && (
@@ -41,7 +41,10 @@ function TaskItem({ task = {} }) {
 }
 
 TaskItem.propTypes = {
-    task: PropTypes.object.isRequired,
+    task: PropTypes.shape({
+        title: PropTypes.string,
+        createdAt: PropTypes.string,
+    }),
 };
 
 export default TaskItem;

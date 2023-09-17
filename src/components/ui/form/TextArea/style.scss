@@ -1,6 +1,8 @@
+@use "@styles/_base.scss";
+
 textarea {
     width: 100%;
     border-radius: 0.5rem;
     padding: 0.5rem;
-    background-color: #f9fafb;
+    background-color: base.$bg-gray-50;
 }

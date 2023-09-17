@@ -5,9 +5,7 @@ function Navbar() {
     return (
         <nav className="nav">
             <div className="nav__container">
-                <a href="#">
-                    <span>Todos</span>
-                </a>
+                <span className="nav__title">Todos</span>
                 <SearchBox />
             </div>
         </nav>

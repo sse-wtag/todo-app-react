@@ -1,6 +1,6 @@
+import { useState } from "react";
 import TaskBoardAction from "@components/TaskBoardAction";
 import Tasks from "@components/Tasks";
-import { useState } from "react";
 import "./style.scss";
 
 function TaskBoard() {
