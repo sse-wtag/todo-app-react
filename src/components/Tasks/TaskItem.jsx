@@ -14,7 +14,10 @@ function TaskItem({ task = {} }) {
 }
 
 TaskItem.propTypes = {
-    task: PropTypes.object.isRequired,
+    task: PropTypes.shape({
+        title: PropTypes.string,
+        createdAt: PropTypes.string,
+    }),
 };
 
 export default TaskItem;
