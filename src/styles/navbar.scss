@@ -11,17 +11,12 @@
         margin-left: auto;
         margin-right: auto;
         padding: 1rem 3rem 1rem 3rem;
+    }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-
-            span {
-                color: base.$primary-color;
-                font-size: 1.5rem;
-                font-weight: bold;
-                line-height: 2rem;
-            }
-        }
+    &__title {
+        color: base.$primary-color;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 2rem;
     }
 }
