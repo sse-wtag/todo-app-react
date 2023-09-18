@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { formatDate } from "@utils/formatDate.js";
 import IconButton from "@components/ui/form/IconButton";
-import TrashIcon from "@components/ui/icons/TrashIcon";
+import { TrashIcon } from "@components/ui/icons";
 import { deleteTask } from "@features/task/taskSlice";
 import "./style.scss";
 
