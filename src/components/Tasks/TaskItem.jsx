@@ -5,7 +5,7 @@ import { formatDate } from "@utils/formatDate.js";
 import { deleteTask, markAsDone } from "@features/task/taskSlice";
 import CheckIcon from "@components/ui/icons/CheckIcon";
 import IconButton from "@components/ui/form/IconButton";
-import TrashIcon from "@components/ui/icons/TrashIcon";
+import { TrashIcon } from "@components/ui/icons";
 import "./style.scss";
 
 function TaskItem({ task = {} }) {
