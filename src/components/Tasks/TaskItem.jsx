@@ -3,13 +3,11 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { compareDates } from "@utils/compareDates";
 import { formatDate } from "@utils/formatDate.js";
-import { deleteTask, markAsDone, updateTask } from "@features/task/taskSlice";
-import Button from "@components/ui/form/button";
-import CheckIcon from "@components/ui/icons/CheckIcon";
 import IconButton from "@components/ui/form/IconButton";
-import PencilIcon from "@components/ui/icons/PencilIcon";
-import TrashIcon from "@components/ui/icons/TrashIcon";
 import TextArea from "@components/ui/form/TextArea";
+import Button from "@components/ui/form/button";
+import { CheckIcon, PencilIcon, TrashIcon } from "@components/ui/icons";
+import { deleteTask, markAsDone, updateTask } from "@features/task/taskSlice";
 import "./style.scss";
 
 function TaskItem({ task = {}, isEditing, onToggleEditing }) {
