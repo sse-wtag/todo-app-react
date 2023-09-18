@@ -2,10 +2,9 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { compareDates } from "@utils/compareDates";
 import { formatDate } from "@utils/formatDate.js";
-import { deleteTask, markAsDone } from "@features/task/taskSlice";
-import CheckIcon from "@components/ui/icons/CheckIcon";
 import IconButton from "@components/ui/form/IconButton";
-import { TrashIcon } from "@components/ui/icons";
+import { CheckIcon, TrashIcon } from "@components/ui/icons";
+import { deleteTask, markAsDone } from "@features/task/taskSlice";
 import "./style.scss";
 
 function TaskItem({ task = {} }) {
