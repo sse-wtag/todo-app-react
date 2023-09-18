@@ -29,8 +29,18 @@ const taskSlice = createSlice({
             state.tasks[taskIndexToMarkAsDone].isCompleted = true;
             state.tasks[taskIndexToMarkAsDone].completedAt = new Date().toISOString();
         },
+        updateTask: (state, action) => {
+            const { id: editId, editTitle } = action.payload;
+            const taskIndexToUpdate = state.tasks.findIndex((task) => task.id === editId);
+
+            if (taskIndexToUpdate === -1) {
+                return;
+            }
+
+            state.tasks[taskIndexToUpdate].title = editTitle;
+        },
     },
 });
 
 export default taskSlice.reducer;
-export const { addTask, deleteTask, markAsDone } = taskSlice.actions;
+export const { addTask, deleteTask, markAsDone, updateTask } = taskSlice.actions;
