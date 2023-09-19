@@ -6,8 +6,8 @@ function TaskItem({ task }) {
     const { title, createdAt } = task;
 
     return (
-        <div className="task-list__item">
-            <h2 className="task-list__item--title">{title}</h2>
+        <div className="task-card">
+            <h2 className="task-card__title">{title}</h2>
             <span>Created At: {formatDate(createdAt)}</span>
         </div>
     );
