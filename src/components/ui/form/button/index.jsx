@@ -3,7 +3,7 @@ import "./style.scss";
 
 function Button({ children, className, type, ...rest }) {
     return (
-        <button type={type} className={`btn ${className}`} {...rest}>
+        <button type={type} className={className} {...rest}>
             {children}
         </button>
     );
