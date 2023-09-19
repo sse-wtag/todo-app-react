@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { compareDates } from "@utils/compareDates";
-import { formatDate } from "@utils/formatDate.js";
+import { formatDate } from "@utils/formatDate";
 import IconButton from "@components/ui/form/IconButton";
 import TextArea from "@components/ui/form/TextArea";
 import Button from "@components/ui/form/button";
@@ -48,17 +48,16 @@ function TaskItem({ task = {}, isEditing, onToggleEditing }) {
     };
 
     return (
-        <div className="task-list__item">
+        <div className={`task-card ${isCompleted && "task-card--complete"}`}>
             {isEditing ? (
                 <TextArea value={editTitle} onChange={handleTitleChange} />
             ) : (
-                <h2 className={isCompleted ? "task-list__item--completed" : "task-list__item--title"}>{title}</h2>
+                <h2 className="task-card__title">{title}</h2>
             )}
 
             <span>Created At: {formatDate(createdAt)}</span>
-            <div className="task-list__action">
+            <div className="task-card__action">
                 {isEditing && <Button onClick={handleToggleEdit}>Save</Button>}
-
                 {!isCompleted && (
                     <IconButton onClick={handleMarkAsDone}>
                         <CheckIcon />
@@ -79,6 +78,10 @@ function TaskItem({ task = {}, isEditing, onToggleEditing }) {
         </div>
     );
 }
+
+TaskItem.defaultProps = {
+    task: {},
+};
 
 TaskItem.propTypes = {
     isEditing: PropTypes.bool.isRequired,

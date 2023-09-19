@@ -41,14 +41,8 @@ function TaskItemInput({ onTaskCreation }) {
     };
 
     return (
-        <form className="task-list__item" onSubmit={handleSubmit}>
-            <TextArea
-                className="task-list__item--input"
-                value={title}
-                onChange={handleTitleChange}
-                autoFocus
-                required
-            />
+        <form className="task-card" onSubmit={handleSubmit}>
+            <TextArea className="task-card__input" value={title} onChange={handleTitleChange} autoFocus required />
             <Button type="submit">Add task</Button>
         </form>
     );
