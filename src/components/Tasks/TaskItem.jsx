@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { formatDate } from "@utils/formatDate.js";
 import "./style.scss";
 
-function TaskItem({ task = {} }) {
+function TaskItem({ task }) {
     const { title, createdAt } = task;
 
     return (
@@ -12,6 +12,10 @@ function TaskItem({ task = {} }) {
         </div>
     );
 }
+
+TaskItem.defaultProps = {
+    task: {},
+};
 
 TaskItem.propTypes = {
     task: PropTypes.shape({
