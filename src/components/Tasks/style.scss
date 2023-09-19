@@ -20,7 +20,7 @@
         font-weight: bold;
         line-height: 2rem;
     }
-
+  
     &__input {
         width: 100%;
         height: 7rem;
@@ -34,5 +34,4 @@
     &--complete &__title {
         text-decoration: line-through;
         color: #0bc375;
-    }
 }

@@ -15,7 +15,7 @@ function TaskItem({ task = {} }) {
     const handleDelete = () => {
         dispatch(deleteTask(id));
     };
-
+  
     const handleMarkAsDone = () => {
         dispatch(markAsDone(id));
     };
