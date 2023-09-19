@@ -2,10 +2,11 @@ import PropTypes from "prop-types";
 import "./style.scss";
 
 function TextArea({ className, rows, ...rest }) {
-    return <textarea className={className || "input-textarea"} rows={rows} {...rest}></textarea>;
+    return <textarea className={className} rows={rows} {...rest}></textarea>;
 }
 
 TextArea.defaultProps = {
+    className: "input-text",
     rows: 3,
 };
 
