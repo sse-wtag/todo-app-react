@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { formatDate } from "@utils/formatDate.js";
+import { formatDate } from "@utils/formatDate";
 import IconButton from "@components/ui/form/IconButton";
 import { TrashIcon } from "@components/ui/icons";
 import { deleteTask } from "@features/task/taskSlice";
@@ -15,8 +15,8 @@ function TaskItem({ task = {} }) {
     };
 
     return (
-        <div className="task-list__item">
-            <h2 className="task-list__item--title">{title}</h2>
+        <div className="task-card">
+            <h2 className="task-card__title">{title}</h2>
             <span>Created At: {formatDate(createdAt)}</span>
             <div className="task-list__action">
                 <IconButton onClick={handleDelete}>
@@ -26,6 +26,10 @@ function TaskItem({ task = {} }) {
         </div>
     );
 }
+
+TaskItem.defaultProps = {
+    task: {},
+};
 
 TaskItem.propTypes = {
     task: PropTypes.shape({

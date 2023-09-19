@@ -11,7 +11,7 @@ function Tasks({ isTaskCreating, onTaskCreation }) {
     });
 
     return (
-        <div className="task-list">
+        <div className="task-grid">
             {isTaskCreating && <TaskItemInput onTaskCreation={onTaskCreation} />}
             {taskItems}
         </div>
