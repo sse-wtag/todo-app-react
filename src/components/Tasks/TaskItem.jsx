@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { formatDate } from "@utils/formatDate.js";
+import { formatDate } from "@utils/formatDate";
 import "./style.scss";
 
 function TaskItem({ task }) {
