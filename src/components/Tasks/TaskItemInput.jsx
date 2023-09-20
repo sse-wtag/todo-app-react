@@ -40,9 +40,23 @@ function TaskItemInput({ onTaskCreation }) {
         onTaskCreation();
     };
 
+    const handleTextareaKeyDown = (event) => {
+        if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault();
+            handleSubmit(event);
+        }
+    };
+
     return (
         <form className="task-card" onSubmit={handleSubmit}>
-            <TextArea className="task-card__input" value={title} onChange={handleTitleChange} autoFocus required />
+            <TextArea
+                className="task-card__input"
+                value={title}
+                onChange={handleTitleChange}
+                autoFocus
+                required
+                onKeyDown={handleTextareaKeyDown}
+            />
             <Button type="submit">Add task</Button>
         </form>
     );
