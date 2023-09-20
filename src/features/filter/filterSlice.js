@@ -8,7 +8,12 @@ const initialState = {
 const filterSlice = createSlice({
     name: "filter",
     initialState,
-    reducers: {},
+    reducers: {
+        filterTask: (state, action) => {
+            state.state = action.payload;
+        },
+    },
 });
 
 export default filterSlice.reducer;
+export const { filterTask } = filterSlice.actions;
