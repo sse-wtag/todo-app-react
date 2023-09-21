@@ -11,7 +11,7 @@ function usePaginate({ collection = [], perPage = 5, startIndex = 0, startPage =
         const totalPageCount = Math.ceil(collectionLength / perPage);
 
         setHasMore(collectionLength > perPage && currentPage < totalPageCount);
-        setIsLastPage(collectionLength > perPage && currentPage === totalPageCount);
+        setIsLastPage(collectionLength > perPage && currentPage >= totalPageCount);
     }, [currentPage, perPage, collection, isCollectionCreating]);
 
     return {
