@@ -5,6 +5,7 @@ import { addTask } from "@features/task/taskSlice";
 import { sanitizeAndTrim } from "@utils/sanitizeAndTrim";
 import Button from "@components/ui/form/button";
 import TextArea from "@components/ui/form/TextArea";
+import { ENTER_KEY } from "@helpers/constants";
 
 function TaskItemInput({ onTaskCreation }) {
     const dispatch = useDispatch();
@@ -40,9 +41,23 @@ function TaskItemInput({ onTaskCreation }) {
         onTaskCreation();
     };
 
+    const handleTextareaKeyDown = (event) => {
+        if (event.key === ENTER_KEY && !event.shiftKey) {
+            event.preventDefault();
+            handleSubmit(event);
+        }
+    };
+
     return (
         <form className="task-card" onSubmit={handleSubmit}>
-            <TextArea className="task-card__input" value={title} onChange={handleTitleChange} autoFocus required />
+            <TextArea
+                className="task-card__input"
+                value={title}
+                onChange={handleTitleChange}
+                autoFocus
+                required
+                onKeyDown={handleTextareaKeyDown}
+            />
             <Button type="submit">Add task</Button>
         </form>
     );
