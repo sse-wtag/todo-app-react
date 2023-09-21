@@ -5,6 +5,7 @@ import { addTask } from "@features/task/taskSlice";
 import { sanitizeAndTrim } from "@utils/sanitizeAndTrim";
 import Button from "@components/ui/form/button";
 import TextArea from "@components/ui/form/TextArea";
+import { ENTER_KEY } from "@helpers/constants";
 
 function TaskItemInput({ onTaskCreation }) {
     const dispatch = useDispatch();
@@ -41,7 +42,7 @@ function TaskItemInput({ onTaskCreation }) {
     };
 
     const handleTextareaKeyDown = (event) => {
-        if (event.key === "Enter" && !event.shiftKey) {
+        if (event.key === ENTER_KEY && !event.shiftKey) {
             event.preventDefault();
             handleSubmit(event);
         }
