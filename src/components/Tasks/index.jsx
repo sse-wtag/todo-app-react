@@ -7,11 +7,12 @@ import Button from "@components/ui/form/button";
 import usePaginate from "@hooks/usePaginate";
 import "./style.scss";
 
+const INVALID_EDITING_ID = -1;
 const TASK_PER_PAGE = import.meta.env.VITE_TASK_PER_PAGE;
 
 function Tasks({ isTaskCreating, onTaskCreation }) {
     const tasks = useSelector((state) => state.tasks.tasks);
-    const [editingId, setEditingId] = useState(-1);
+    const [editingId, setEditingId] = useState(INVALID_EDITING_ID);
     const {
         data: chunkedTasks,
         setCurrentPage,
@@ -24,7 +25,7 @@ function Tasks({ isTaskCreating, onTaskCreation }) {
 
     const toggleEditing = (taskId) => {
         setEditingId((prevEditingId) => {
-            return prevEditingId === -1 ? taskId : -1;
+            return prevEditingId === INVALID_EDITING_ID ? taskId : INVALID_EDITING_ID;
         });
     };
 
