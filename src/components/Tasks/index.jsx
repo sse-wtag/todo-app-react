@@ -21,6 +21,7 @@ function Tasks({ isTaskCreating, onTaskCreation }) {
     } = usePaginate({
         collection: tasks,
         perPage: TASK_PER_PAGE,
+        isCollectionCreating: isTaskCreating,
     });
 
     const toggleEditing = (taskId) => {
