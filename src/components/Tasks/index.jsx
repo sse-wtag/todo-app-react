@@ -8,9 +8,11 @@ import { selectAllTasks, selectCompletedTasks, selectInCompletedTasks } from "@f
 import usePaginate from "@hooks/usePaginate";
 import "./style.scss";
 
+const INVALID_EDITING_ID = -1;
 const TASK_PER_PAGE = import.meta.env.VITE_TASK_PER_PAGE;
 
 function Tasks({ isTaskCreating, onTaskCreation }) {
+    console.log("Tasks rendered");
     const filterState = useSelector((state) => state.filter.state);
     const tasks = useSelector((state) => {
         if (filterState === "complete") {
@@ -21,29 +23,23 @@ function Tasks({ isTaskCreating, onTaskCreation }) {
         return selectAllTasks(state);
     });
 
-    const [editingId, setEditingId] = useState(-1);
+    const [editingId, setEditingId] = useState(INVALID_EDITING_ID);
     const {
         data: chunkedTasks,
-        setCurrentPage,
         hasMore,
         isLastPage,
+        next,
+        reset,
     } = usePaginate({
         collection: tasks,
+        isCollectionCreating: isTaskCreating,
         perPage: TASK_PER_PAGE,
     });
 
     const toggleEditing = (taskId) => {
         setEditingId((prevEditingId) => {
-            return prevEditingId === -1 ? taskId : -1;
+            return prevEditingId === INVALID_EDITING_ID ? taskId : INVALID_EDITING_ID;
         });
-    };
-
-    const loadMore = () => {
-        setCurrentPage((prevPage) => prevPage + 1);
-    };
-
-    const showLess = () => {
-        setCurrentPage(1);
     };
 
     const taskItems = chunkedTasks.map((task) => {
@@ -64,8 +60,8 @@ function Tasks({ isTaskCreating, onTaskCreation }) {
                 {taskItems}
             </div>
             <div className="task-board__paginate-wrapper">
-                {hasMore && <Button onClick={loadMore}>Load More</Button>}
-                {isLastPage && <Button onClick={showLess}>Show Less</Button>}
+                {hasMore && <Button onClick={next}>Load More</Button>}
+                {isLastPage && <Button onClick={reset}>Show Less</Button>}
             </div>
         </>
     );
