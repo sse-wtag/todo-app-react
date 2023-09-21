@@ -5,13 +5,15 @@ import TaskItem from "./TaskItem";
 import TaskItemInput from "./TaskItemInput";
 import "./style.scss";
 
+const INVALID_EDITING_ID = -1;
+
 function Tasks({ isTaskCreating, onTaskCreation }) {
     const tasks = useSelector((state) => state.tasks.tasks);
-    const [editingId, setEditingId] = useState(-1);
+    const [editingId, setEditingId] = useState(INVALID_EDITING_ID);
 
     const toggleEditing = (taskId) => {
         setEditingId((prevEditingId) => {
-            return prevEditingId === -1 ? taskId : -1;
+            return prevEditingId === INVALID_EDITING_ID ? taskId : INVALID_EDITING_ID;
         });
     };
 
