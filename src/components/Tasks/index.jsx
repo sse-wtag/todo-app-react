@@ -15,27 +15,20 @@ function Tasks({ isTaskCreating, onTaskCreation }) {
     const [editingId, setEditingId] = useState(INVALID_EDITING_ID);
     const {
         data: chunkedTasks,
-        setCurrentPage,
         hasMore,
         isLastPage,
+        next,
+        reset,
     } = usePaginate({
         collection: tasks,
-        perPage: TASK_PER_PAGE,
         isCollectionCreating: isTaskCreating,
+        perPage: TASK_PER_PAGE,
     });
 
     const toggleEditing = (taskId) => {
         setEditingId((prevEditingId) => {
             return prevEditingId === INVALID_EDITING_ID ? taskId : INVALID_EDITING_ID;
         });
-    };
-
-    const loadMore = () => {
-        setCurrentPage((prevPage) => prevPage + 1);
-    };
-
-    const showLess = () => {
-        setCurrentPage(1);
     };
 
     const taskItems = chunkedTasks.map((task) => {
@@ -56,8 +49,8 @@ function Tasks({ isTaskCreating, onTaskCreation }) {
                 {taskItems}
             </div>
             <div className="task-board__paginate-wrapper">
-                {hasMore && <Button onClick={loadMore}>Load More</Button>}
-                {isLastPage && <Button onClick={showLess}>Show Less</Button>}
+                {hasMore && <Button onClick={next}>Load More</Button>}
+                {isLastPage && <Button onClick={reset}>Show Less</Button>}
             </div>
         </>
     );
