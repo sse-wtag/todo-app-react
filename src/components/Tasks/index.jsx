@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import TaskItem from "./TaskItem";
@@ -12,7 +12,6 @@ const INVALID_EDITING_ID = -1;
 const TASK_PER_PAGE = import.meta.env.VITE_TASK_PER_PAGE;
 
 function Tasks({ isTaskCreating, onTaskCreation }) {
-    console.log("Tasks rendered");
     const filterState = useSelector((state) => state.filter.state);
     const tasks = useSelector((state) => {
         if (filterState === "complete") {
@@ -52,6 +51,11 @@ function Tasks({ isTaskCreating, onTaskCreation }) {
             />
         );
     });
+
+    useEffect(() => {
+        reset();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [filterState]);
 
     return (
         <>
