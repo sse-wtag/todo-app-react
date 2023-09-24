@@ -1,8 +1,9 @@
+import { TASK_STATE_ALL } from "@helpers/constants";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     search: "",
-    state: "all",
+    state: TASK_STATE_ALL,
 };
 
 const filterSlice = createSlice({

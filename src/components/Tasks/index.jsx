@@ -5,6 +5,7 @@ import TaskItem from "./TaskItem";
 import TaskItemInput from "./TaskItemInput";
 import Button from "@components/ui/form/button";
 import { selectAllTasks, selectCompletedTasks, selectInCompletedTasks } from "@features/task/taskSelectors";
+import { TASK_STATE_COMPLETE, TASK_STATE_INCOMPLETE } from "@helpers/constants";
 import usePaginate from "@hooks/usePaginate";
 import "./style.scss";
 
@@ -14,9 +15,9 @@ const TASK_PER_PAGE = import.meta.env.VITE_TASK_PER_PAGE;
 function Tasks({ isTaskCreating, onTaskCreation }) {
     const filterState = useSelector((state) => state.filter.state);
     const tasks = useSelector((state) => {
-        if (filterState === "complete") {
+        if (filterState === TASK_STATE_COMPLETE) {
             return selectCompletedTasks(state);
-        } else if (filterState === "incomplete") {
+        } else if (filterState === TASK_STATE_INCOMPLETE) {
             return selectInCompletedTasks(state);
         }
         return selectAllTasks(state);
