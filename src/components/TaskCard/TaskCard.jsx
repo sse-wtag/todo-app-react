@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import { formatDate } from "@utils/formatDate";
-import "./style.scss";
+import formatDate from "@helpers/formatting/formatDate";
+import "@components/TaskList/TaskList.scss";
 
-function TaskItem({ task }) {
+function TaskCard({ task }) {
     const { title, createdAt } = task;
 
     return (
@@ -13,15 +13,15 @@ function TaskItem({ task }) {
     );
 }
 
-TaskItem.defaultProps = {
+TaskCard.defaultProps = {
     task: {},
 };
 
-TaskItem.propTypes = {
+TaskCard.propTypes = {
     task: PropTypes.shape({
         title: PropTypes.string,
         createdAt: PropTypes.string,
     }),
 };
 
-export default TaskItem;
+export default TaskCard;
