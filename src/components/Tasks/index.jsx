@@ -4,8 +4,7 @@ import PropTypes from "prop-types";
 import TaskItem from "./TaskItem";
 import TaskItemInput from "./TaskItemInput";
 import Button from "@components/ui/form/button";
-import { selectAllTasks, selectCompletedTasks, selectInCompletedTasks } from "@features/task/taskSelectors";
-import { TASK_STATE_COMPLETE, TASK_STATE_INCOMPLETE } from "@helpers/constants";
+import { selectFilteredTasks } from "@features/task/taskSelectors";
 import usePaginate from "@hooks/usePaginate";
 import "./style.scss";
 
@@ -13,16 +12,8 @@ const INVALID_EDITING_ID = -1;
 const TASK_PER_PAGE = import.meta.env.VITE_TASK_PER_PAGE;
 
 function Tasks({ isTaskCreating, onTaskCreation }) {
-    const filterState = useSelector((state) => state.filter.state);
-    const tasks = useSelector((state) => {
-        if (filterState === TASK_STATE_COMPLETE) {
-            return selectCompletedTasks(state);
-        } else if (filterState === TASK_STATE_INCOMPLETE) {
-            return selectInCompletedTasks(state);
-        }
-        return selectAllTasks(state);
-    });
-
+    const { state: filterState } = useSelector((state) => state.filter);
+    const tasks = useSelector((state) => selectFilteredTasks(state, filterState));
     const [editingId, setEditingId] = useState(INVALID_EDITING_ID);
     const {
         data: chunkedTasks,

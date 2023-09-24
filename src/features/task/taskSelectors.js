@@ -1,3 +1,18 @@
+import { TASK_STATE_COMPLETE, TASK_STATE_INCOMPLETE } from "@helpers/constants";
+import { createSelector } from "@reduxjs/toolkit";
+
 export const selectAllTasks = (state) => state.tasks.tasks;
-export const selectCompletedTasks = (state) => state.tasks.tasks.filter((task) => task.isCompleted);
-export const selectInCompletedTasks = (state) => state.tasks.tasks.filter((task) => !task.isCompleted);
+
+export const selectFilteredTasks = createSelector(
+    selectAllTasks,
+    (state, filterState) => filterState,
+    (allTasks, filterState) => {
+        if (filterState === TASK_STATE_COMPLETE) {
+            return allTasks.filter((task) => task.isCompleted);
+        } else if (filterState === TASK_STATE_INCOMPLETE) {
+            return allTasks.filter((task) => !task.isCompleted);
+        }
+
+        return allTasks;
+    },
+);
