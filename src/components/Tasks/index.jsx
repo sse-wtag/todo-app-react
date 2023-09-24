@@ -12,8 +12,8 @@ const INVALID_EDITING_ID = -1;
 const TASK_PER_PAGE = import.meta.env.VITE_TASK_PER_PAGE;
 
 function Tasks({ isTaskCreating, onTaskCreation }) {
-    const { state: filterState } = useSelector((state) => state.filter);
-    const tasks = useSelector((state) => selectFilteredTasks(state, filterState));
+    const { state: filterState, search: textToSearch } = useSelector((state) => state.filter);
+    const tasks = useSelector((state) => selectFilteredTasks(state, filterState, textToSearch));
     const [editingId, setEditingId] = useState(INVALID_EDITING_ID);
     const {
         data: chunkedTasks,
@@ -47,7 +47,7 @@ function Tasks({ isTaskCreating, onTaskCreation }) {
     useEffect(() => {
         reset();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [filterState]);
+    }, [filterState, textToSearch]);
 
     return (
         <>

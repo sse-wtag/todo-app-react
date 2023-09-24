@@ -13,8 +13,12 @@ const filterSlice = createSlice({
         filterTask: (state, action) => {
             state.state = action.payload;
         },
+
+        searchTask: (state, action) => {
+            state.search = action.payload;
+        },
     },
 });
 
 export default filterSlice.reducer;
-export const { filterTask } = filterSlice.actions;
+export const { filterTask, searchTask } = filterSlice.actions;
