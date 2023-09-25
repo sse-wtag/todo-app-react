@@ -1,11 +1,14 @@
 import Navbar from "@components/Navbar";
 import TaskBoard from "@components/TaskBoard";
+import { useState } from "react";
 
 function App() {
+    const [isSearching, setIsSearching] = useState(false);
+
     return (
         <>
-            <Navbar />
-            <TaskBoard />
+            <Navbar onSearching={setIsSearching} />
+            <TaskBoard isSearching={isSearching} />
         </>
     );
 }

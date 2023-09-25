@@ -10,7 +10,7 @@ import { CheckIcon, PencilIcon, TrashIcon } from "@components/ui/icons";
 import { deleteTask, markAsDone, updateTask } from "@features/task/taskSlice";
 import "./style.scss";
 
-function TaskItem({ task = {}, isEditing, onToggleEditing }) {
+function TaskItem({ task = {}, isDisabled, isEditing, onToggleEditing }) {
     const { id, title, createdAt, isCompleted, completedAt } = task;
     const dispatch = useDispatch();
     const now = new Date().toISOString();
@@ -50,27 +50,31 @@ function TaskItem({ task = {}, isEditing, onToggleEditing }) {
     return (
         <div className={`task-card ${isCompleted && "task-card--complete"}`}>
             {isEditing ? (
-                <TextArea value={editTitle} onChange={handleTitleChange} />
+                <TextArea disabled={isDisabled} value={editTitle} onChange={handleTitleChange} />
             ) : (
                 <h2 className="task-card__title">{title}</h2>
             )}
 
             <span>Created At: {formatDate(createdAt)}</span>
             <div className="task-card__action">
-                {isEditing && <Button onClick={handleToggleEdit}>Save</Button>}
+                {isEditing && (
+                    <Button disabled={isDisabled} onClick={handleToggleEdit}>
+                        Save
+                    </Button>
+                )}
                 {!isCompleted && (
-                    <IconButton onClick={handleMarkAsDone}>
+                    <IconButton disabled={isDisabled} onClick={handleMarkAsDone}>
                         <CheckIcon />
                     </IconButton>
                 )}
 
                 {!isEditing && !isCompleted && (
-                    <IconButton onClick={handleToggleEdit}>
+                    <IconButton disabled={isDisabled} onClick={handleToggleEdit}>
                         <PencilIcon />
                     </IconButton>
                 )}
 
-                <IconButton onClick={handleDelete}>
+                <IconButton disabled={isDisabled} onClick={handleDelete}>
                     <TrashIcon />
                 </IconButton>
             </div>
@@ -80,10 +84,12 @@ function TaskItem({ task = {}, isEditing, onToggleEditing }) {
 }
 
 TaskItem.defaultProps = {
+    isDisabled: false,
     task: {},
 };
 
 TaskItem.propTypes = {
+    isDisabled: PropTypes.bool,
     isEditing: PropTypes.bool.isRequired,
     onToggleEditing: PropTypes.func.isRequired,
     task: PropTypes.shape({

@@ -1,15 +1,20 @@
+import PropTypes from "prop-types";
 import SearchBox from "@components/ui/SearchBox";
 import "@styles/navbar.scss";
 
-function Navbar() {
+function Navbar({ onSearching }) {
     return (
         <nav className="nav">
             <div className="nav__container">
                 <span className="nav__title">Todos</span>
-                <SearchBox />
+                <SearchBox onSearching={onSearching} />
             </div>
         </nav>
     );
 }
+
+Navbar.propTypes = {
+    onSearching: PropTypes.func.isRequired,
+};
 
 export default Navbar;
