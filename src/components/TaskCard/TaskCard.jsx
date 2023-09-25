@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { formatDate } from "@utils/formatDate";
+import { deleteTask } from "@features/task/taskSlice";
+import formatDate from "@helpers/formatting/formatDate";
 import IconButton from "@components/ui/form/IconButton";
 import { TrashIcon } from "@components/ui/icons";
-import { deleteTask } from "@features/task/taskSlice";
-import "./style.scss";
+import "@components/TaskList/TaskList.scss";
 
-function TaskItem({ task = {} }) {
+function TaskCard({ task }) {
     const { id, title, createdAt } = task;
     const dispatch = useDispatch();
 
@@ -27,15 +27,16 @@ function TaskItem({ task = {} }) {
     );
 }
 
-TaskItem.defaultProps = {
+TaskCard.defaultProps = {
     task: {},
 };
 
-TaskItem.propTypes = {
+TaskCard.propTypes = {
     task: PropTypes.shape({
+        id: PropTypes.string,
         title: PropTypes.string,
         createdAt: PropTypes.string,
     }),
 };
 
-export default TaskItem;
+export default TaskCard;
