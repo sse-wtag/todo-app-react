@@ -6,6 +6,7 @@ import { sanitizeAndTrim } from "@utils/sanitizeAndTrim";
 import Button from "@components/ui/form/button";
 import TextArea from "@components/ui/form/TextArea";
 import { ENTER_KEY } from "@helpers/constants";
+import { displayToaster } from "@utils/toaster";
 
 function TaskItemInput({ onTaskCreation }) {
     const dispatch = useDispatch();
@@ -39,6 +40,7 @@ function TaskItemInput({ onTaskCreation }) {
         dispatch(addTask(newTask));
         resetInput();
         onTaskCreation();
+        displayToaster("Task is created", "success");
     };
 
     const handleTextareaKeyDown = (event) => {

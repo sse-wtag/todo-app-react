@@ -9,6 +9,7 @@ import Button from "@components/ui/form/button";
 import { CheckIcon, PencilIcon, TrashIcon } from "@components/ui/icons";
 import { deleteTask, markAsDone, updateTask } from "@features/task/taskSlice";
 import "./style.scss";
+import { displayToaster } from "@utils/toaster";
 
 function TaskItem({ task = {}, isDisabled, isEditing, onToggleEditing }) {
     const { id, title, createdAt, isCompleted, completedAt } = task;
@@ -22,6 +23,7 @@ function TaskItem({ task = {}, isDisabled, isEditing, onToggleEditing }) {
 
     const editTask = () => {
         dispatch(updateTask({ id, editTitle }));
+        displayToaster("Task is updated", "success");
     };
 
     const handleToggleEdit = () => {
@@ -37,6 +39,7 @@ function TaskItem({ task = {}, isDisabled, isEditing, onToggleEditing }) {
             return;
         }
         dispatch(deleteTask(id));
+        displayToaster("Task is removed", "error");
     };
 
     const handleMarkAsDone = () => {
@@ -45,6 +48,7 @@ function TaskItem({ task = {}, isDisabled, isEditing, onToggleEditing }) {
             onToggleEditing(id);
         }
         dispatch(markAsDone(id));
+        displayToaster("Task is marked as done", "success");
     };
 
     return (

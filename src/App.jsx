@@ -1,6 +1,8 @@
+import { useState } from "react";
+import { ToastContainer } from "react-toastify";
 import Navbar from "@components/Navbar";
 import TaskBoard from "@components/TaskBoard";
-import { useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
     const [isSearching, setIsSearching] = useState(false);
@@ -9,6 +11,7 @@ function App() {
         <>
             <Navbar onSearching={setIsSearching} />
             <TaskBoard isSearching={isSearching} />
+            <ToastContainer />
         </>
     );
 }
