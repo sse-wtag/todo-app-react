@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from "react";
-import { debounce } from "@utils/debounce";
+import { debounce } from "@helpers/utility/debounce";
 
 function useDebounce(callback, delayInMilliSeconds = 500) {
     const ref = useRef();
