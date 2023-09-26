@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import TaskItem from "./TaskItem";
-import TaskItemInput from "./TaskItemInput";
-import "./style.scss";
+import { useSelector } from "react-redux";
+import TaskCard from "@components/TaskCard";
+import CreateTaskCard from "@components/CreateTaskCard";
+import "./TaskList.scss";
 
 const INVALID_EDITING_ID = -1;
 
-function Tasks({ isTaskCreating, onTaskCreation }) {
+function TaskList({ isTaskCreating, onTaskCreation }) {
     const tasks = useSelector((state) => state.tasks.tasks);
     const [editingId, setEditingId] = useState(INVALID_EDITING_ID);
 
@@ -19,7 +19,7 @@ function Tasks({ isTaskCreating, onTaskCreation }) {
 
     const taskItems = tasks.map((task) => {
         return (
-            <TaskItem
+            <TaskCard
                 key={task.id}
                 task={task}
                 isEditing={Boolean(editingId === task.id)}
@@ -30,15 +30,15 @@ function Tasks({ isTaskCreating, onTaskCreation }) {
 
     return (
         <div className="task-grid">
-            {isTaskCreating && <TaskItemInput onTaskCreation={onTaskCreation} />}
+            {isTaskCreating && <CreateTaskCard onTaskCreation={onTaskCreation} />}
             {taskItems}
         </div>
     );
 }
 
-Tasks.propTypes = {
+TaskList.propTypes = {
     isTaskCreating: PropTypes.bool.isRequired,
     onTaskCreation: PropTypes.func.isRequired,
 };
 
-export default Tasks;
+export default TaskList;

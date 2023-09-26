@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import "./style.scss";
+import "./TextArea.scss";
 
 function TextArea({ className, rows, ...rest }) {
     return <textarea className={className} rows={rows} {...rest}></textarea>;

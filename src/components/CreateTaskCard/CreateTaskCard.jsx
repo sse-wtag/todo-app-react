@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Button, TextArea } from "@components/ui/form";
 import { addTask } from "@features/task/taskSlice";
-import { sanitizeAndTrim } from "@utils/sanitizeAndTrim";
-import Button from "@components/ui/form/button";
-import TextArea from "@components/ui/form/TextArea";
 import { ENTER_KEY } from "@helpers/constants";
+import purify from "@helpers/text/purify";
+import "@components/TaskCard/TaskCard.scss";
 
-function TaskItemInput({ onTaskCreation }) {
+function CreateTaskCard({ onTaskCreation }) {
     const dispatch = useDispatch();
     const [title, setTitle] = useState("");
 
@@ -22,7 +22,7 @@ function TaskItemInput({ onTaskCreation }) {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        const cleanTitle = sanitizeAndTrim(title);
+        const cleanTitle = purify(title);
 
         if (cleanTitle === "") {
             resetInput();
@@ -63,8 +63,8 @@ function TaskItemInput({ onTaskCreation }) {
     );
 }
 
-TaskItemInput.propTypes = {
+CreateTaskCard.propTypes = {
     onTaskCreation: PropTypes.func.isRequired,
 };
 
-export default TaskItemInput;
+export default CreateTaskCard;

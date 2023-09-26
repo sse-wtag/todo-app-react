@@ -1,9 +1,17 @@
+import classNames from "classnames";
 import PropTypes from "prop-types";
-import "./style.scss";
+import "./Button.scss";
 
 function Button({ children, className, type, ...rest }) {
     return (
-        <button type={type} className={`btn ${className}`} {...rest}>
+        <button
+            type={type}
+            className={classNames({
+                btn: true,
+                [className]: Boolean(className),
+            })}
+            {...rest}
+        >
             {children}
         </button>
     );
