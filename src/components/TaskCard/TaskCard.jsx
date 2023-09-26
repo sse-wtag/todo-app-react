@@ -18,10 +18,12 @@ function TaskCard({ task }) {
         <div className="task-card">
             <h2 className="task-card__title">{title}</h2>
             <span>Created At: {formatDate(createdAt)}</span>
-            <div className="task-list__action">
-                <IconButton onClick={handleDelete}>
-                    <TrashIcon />
-                </IconButton>
+            <div className="task-card__body">
+                <div className="task-card__actions-wrapper">
+                    <IconButton onClick={handleDelete}>
+                        <TrashIcon />
+                    </IconButton>
+                </div>
             </div>
         </div>
     );
