@@ -5,7 +5,7 @@ import { Button, TextArea } from "@components/ui/form";
 import { addTask } from "@features/task/taskSlice";
 import { ENTER_KEY } from "@helpers/constants";
 import purify from "@helpers/text/purify";
-import "@components/TaskList/TaskList.scss";
+import "@components/TaskCard/TaskCard.scss";
 
 function CreateTaskCard({ onTaskCreation }) {
     const dispatch = useDispatch();
