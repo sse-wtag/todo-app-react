@@ -10,7 +10,10 @@ import "@components/TaskList/TaskList.scss";
 function TaskCard({ task }) {
     const { id, title, createdAt, isCompleted, completedAt } = task;
     const dispatch = useDispatch();
+
     const now = new Date().toISOString();
+    const dayDifference = compareDates(now, completedAt);
+    const dayDifferenceText = dayDifference === 1 ? "day" : "days";
 
     const handleDelete = () => {
         dispatch(deleteTask(id));
@@ -34,7 +37,11 @@ function TaskCard({ task }) {
                     <TrashIcon />
                 </IconButton>
             </div>
-            {completedAt && <span>Completed in {compareDates(now, completedAt)} days</span>}
+            {completedAt && (
+                <span>
+                    Completed in {dayDifference} {dayDifferenceText}
+                </span>
+            )}
         </div>
     );
 }
