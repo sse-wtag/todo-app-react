@@ -4,7 +4,7 @@ import { deleteTask } from "@features/task/taskSlice";
 import formatDate from "@helpers/formatting/formatDate";
 import IconButton from "@components/ui/form/IconButton";
 import { TrashIcon } from "@components/ui/icons";
-import "@components/TaskList/TaskList.scss";
+import "@components/TaskCard/TaskCard.scss";
 
 function TaskCard({ task }) {
     const { id, title, createdAt } = task;
