@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { compareDates } from "@utils/compareDates";
-import { formatDate } from "@utils/formatDate";
 import IconButton from "@components/ui/form/IconButton";
 import { CheckIcon, TrashIcon } from "@components/ui/icons";
 import { deleteTask, markAsDone } from "@features/task/taskSlice";
-import "./style.scss";
+import formatDate from "@helpers/formatting/formatDate";
+import { compareDates } from "@helpers/operations/compareDates";
+import "@components/TaskList/TaskList.scss";
 
-function TaskItem({ task = {} }) {
+function TaskCard({ task }) {
     const { id, title, createdAt, isCompleted, completedAt } = task;
     const dispatch = useDispatch();
     const now = new Date().toISOString();
@@ -15,7 +15,7 @@ function TaskItem({ task = {} }) {
     const handleDelete = () => {
         dispatch(deleteTask(id));
     };
-  
+
     const handleMarkAsDone = () => {
         dispatch(markAsDone(id));
     };
@@ -39,15 +39,18 @@ function TaskItem({ task = {} }) {
     );
 }
 
-TaskItem.defaultProps = {
+TaskCard.defaultProps = {
     task: {},
 };
 
-TaskItem.propTypes = {
+TaskCard.propTypes = {
     task: PropTypes.shape({
+        id: PropTypes.string,
         title: PropTypes.string,
         createdAt: PropTypes.string,
+        completedAt: PropTypes.string,
+        isCompleted: PropTypes.bool,
     }),
 };
 
-export default TaskItem;
+export default TaskCard;

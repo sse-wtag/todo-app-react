@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import "./style.scss";
+import "./IconButton.scss";
 
 function IconButton({ type = "button", className = "icon-btn", children, ...rest }) {
     return (
