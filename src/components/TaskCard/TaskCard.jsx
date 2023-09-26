@@ -5,7 +5,7 @@ import { CheckIcon, TrashIcon } from "@components/ui/icons";
 import { deleteTask, markAsDone } from "@features/task/taskSlice";
 import formatDate from "@helpers/formatting/formatDate";
 import { compareDates } from "@helpers/operations/compareDates";
-import "@components/TaskList/TaskList.scss";
+import "@components/TaskCard/TaskCard.scss";
 
 function TaskCard({ task }) {
     const { id, title, createdAt, isCompleted, completedAt } = task;
@@ -27,15 +27,17 @@ function TaskCard({ task }) {
         <div className={`task-card ${isCompleted && "task-card--complete"}`}>
             <h2 className="task-card__title">{title}</h2>
             <span>Created At: {formatDate(createdAt)}</span>
-            <div className="task-card__action">
-                {!isCompleted && (
-                    <IconButton onClick={handleMarkAsDone}>
-                        <CheckIcon />
+            <div className="task-card__body">
+                <div className="task-card__actions-wrapper">
+                    {!isCompleted && (
+                        <IconButton onClick={handleMarkAsDone}>
+                            <CheckIcon />
+                        </IconButton>
+                    )}
+                    <IconButton onClick={handleDelete}>
+                        <TrashIcon />
                     </IconButton>
-                )}
-                <IconButton onClick={handleDelete}>
-                    <TrashIcon />
-                </IconButton>
+                </div>
             </div>
             {completedAt && (
                 <span>
