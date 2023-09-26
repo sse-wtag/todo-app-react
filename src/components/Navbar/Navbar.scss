@@ -1,0 +1,22 @@
+@use "@styles/_base.scss";
+
+.nav {
+    background-color: base.$bg-white;
+    border-bottom: 0.06rem solid base.$secondary-color;
+
+    &__container {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1rem 3rem 1rem 3rem;
+    }
+
+    &__title {
+        color: base.$primary-color;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 2rem;
+    }
+}
