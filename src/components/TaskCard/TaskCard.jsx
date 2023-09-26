@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import IconButton from "@components/ui/form/IconButton";
@@ -24,7 +25,12 @@ function TaskCard({ task }) {
     };
 
     return (
-        <div className={`task-card ${isCompleted && "task-card--complete"}`}>
+        <div
+            className={classNames({
+                "task-card": true,
+                "task-card--complete": isCompleted,
+            })}
+        >
             <h2 className="task-card__title">{title}</h2>
             <span>Created At: {formatDate(createdAt)}</span>
             <div className="task-card__body">
