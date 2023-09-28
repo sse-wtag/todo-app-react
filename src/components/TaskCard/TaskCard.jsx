@@ -79,20 +79,25 @@ function TaskCard({ task, isDisabled }) {
             className={classNames({
                 "task-card": true,
                 "task-card--complete": isCompleted,
+                "task-card--disabled": isDisabled,
             })}
         >
-            {isEditing ? (
-                <TextArea
-                    className="task-card__input"
-                    value={editTitle}
-                    onChange={handleTitleChange}
-                    onKeyUp={handleTextareaKeyDown}
-                    disabled={isDisabled}
-                />
-            ) : (
-                <h2 className="task-card__title">{title}</h2>
-            )}
-            <span>Created At: {formatDate(createdAt)}</span>
+            <div className="task-card__header">
+                {isEditing ? (
+                    <TextArea
+                        className="task-card__input"
+                        value={editTitle}
+                        onChange={handleTitleChange}
+                        onKeyUp={handleTextareaKeyDown}
+                        disabled={isDisabled}
+                    />
+                ) : (
+                    <>
+                        <h2 className="task-card__title">{title}</h2>
+                        <span className="task-card__created-date">Created At: {formatDate(createdAt)}</span>
+                    </>
+                )}
+            </div>
             <div className="task-card__body">
                 <div className="task-card__actions-wrapper">
                     {isEditing && (
@@ -117,12 +122,12 @@ function TaskCard({ task, isDisabled }) {
                         <TrashIcon />
                     </IconButton>
                 </div>
+                {completedAt && (
+                    <span className="task-card__completed-in">
+                        Completed in {dayDifference} {dayDifferenceText}
+                    </span>
+                )}
             </div>
-            {completedAt && (
-                <span>
-                    Completed in {dayDifference} {dayDifferenceText}
-                </span>
-            )}
         </div>
     );
 }

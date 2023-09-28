@@ -1,38 +1,91 @@
 @use "@styles/_base.scss";
 
 .task-card {
-    background-color: base.$bg-white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 1rem;
-    border-radius: 0.5rem;
-    border: 0.06rem solid base.$bg-gray-400;
-    min-height: 10rem;
+    background-color: base.$bg-white;
+    border: 0.06rem solid base.$color-primary-light;
+    border-radius: 0.31rem;
+    gap: 1.5rem;
+
+    &__header {
+        height: 100%;
+    }
 
     &__title {
-        font-size: 1.2rem;
-        font-weight: bold;
-        line-height: 2rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1.75rem;
+        color: base.$color-secondary;
+        margin-bottom: 0.563rem;
+    }
+
+    &__created-date {
+        font-size: 0.875rem;
+        font-weight: 700;
+        line-height: 1rem;
+        color: base.$color-secondary-light;
     }
 
     &__body {
         display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
     }
 
     &__actions-wrapper {
         display: flex;
+        gap: 1.62rem;
+        align-items: center;
+        flex-wrap: wrap;
     }
 
     &__input {
         width: 100%;
-        height: 7rem;
-        margin-bottom: 1rem;
+        height: 100%;
+        padding: 0.31rem 0.563rem;
+        border: 0.03rem solid base.$color-primary-light;
+        border-radius: 0.31rem;
+        color: base.$color-secondary;
+        font-size: 1rem;
+        font-weight: 500;
         text-align: start;
-        border-radius: 1rem;
-        padding: 0.5rem;
-        background-color: base.$bg-gray-50;
+        resize: none;
+    }
+
+    &__input:focus {
+        outline-width: 0.18rem;
+        outline-color: base.$color-primary-light;
+    }
+
+    &__completed-in {
+        background-color: base.$color-primary;
+        border-radius: 0.31rem;
+        padding: 0.31rem 0.75rem;
+        color: base.$bg-white;
+        font-weight: 700;
+        font-size: 0.75rem;
+        line-height: 0.875rem;
     }
 
     &--complete &__title {
         text-decoration: line-through;
-        color: #0bc375;
+        color: base.$color-success;
+    }
+
+    &--disabled {
+        opacity: 50%;
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+}
+
+@media (max-width: base.$screen-mobile) {
+    .task-card__body {
+        gap: 0.8rem;
     }
 }

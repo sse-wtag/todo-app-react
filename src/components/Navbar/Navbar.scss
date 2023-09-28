@@ -2,7 +2,7 @@
 
 .nav {
     background-color: base.$bg-white;
-    border-bottom: 0.06rem solid base.$secondary-color;
+    border-bottom: 0.06rem solid base.$color-primary-light;
 
     &__container {
         align-items: center;
@@ -14,7 +14,7 @@
     }
 
     &__title {
-        color: base.$primary-color;
+        color: base.$color-primary;
         font-size: 1.5rem;
         font-weight: bold;
         line-height: 2rem;
