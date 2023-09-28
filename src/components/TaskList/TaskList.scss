@@ -43,11 +43,3 @@
         }
     }
 }
-
-@media (min-width: base.$screen-desktop) {
-    .task-list {
-        &__grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-}
