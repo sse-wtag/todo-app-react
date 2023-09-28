@@ -85,7 +85,9 @@
 }
 
 @media (max-width: base.$screen-mobile) {
-    .task-card__body {
-        gap: 0.8rem;
+    .task-card {
+        &__body {
+            gap: 0.8rem;
+        }
     }
 }
