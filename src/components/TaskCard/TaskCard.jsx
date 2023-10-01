@@ -12,6 +12,7 @@ import { compareDates } from "@helpers/operations/compareDates";
 import purify from "@helpers/text/purify";
 import { displayToaster } from "@helpers/utility/toaster";
 import "@components/TaskCard/TaskCard.scss";
+import SuccessToasterMessage from "@components/ui/toaster/SuccessMessage";
 
 function TaskCard({ task, isDisabled }) {
     const { id, title, createdAt, isCompleted, completedAt } = task;
@@ -43,7 +44,7 @@ function TaskCard({ task, isDisabled }) {
         dispatch(updateTask({ id, editTitle: purifiedEditTitle }));
         turnOffEditing();
         setEditTitle(purifiedEditTitle);
-        displayToaster("Task is updated", "success");
+        displayToaster(<SuccessToasterMessage />, "success");
     };
 
     const handleDelete = () => {
@@ -64,7 +65,7 @@ function TaskCard({ task, isDisabled }) {
             editTask();
         }
         dispatch(markAsDone(id));
-        displayToaster("Task is marked as done", "success");
+        displayToaster(<SuccessToasterMessage />, "success");
     };
 
     const handleTextareaKeyDown = (event) => {

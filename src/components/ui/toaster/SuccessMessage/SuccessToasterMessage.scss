@@ -1,0 +1,22 @@
+@use "@styles/_base.scss";
+
+.toast-success-message {
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.43rem;
+    }
+
+    &__icon {
+        width: 0.75rem;
+        height: 0.75rem;
+        fill: base.$bg-white;
+    }
+
+    &__message {
+        color: base.$bg-white;
+        font-weight: 700;
+        word-break: keep-all;
+    }
+}
