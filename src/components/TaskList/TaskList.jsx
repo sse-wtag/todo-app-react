@@ -43,8 +43,16 @@ function TaskList({ isDisabled, isTaskCreating, onTaskCreation }) {
 
             {(hasMore || isLastPage) && (
                 <div className="task-list__paginate-buttons">
-                    {hasMore && <Button onClick={next}>Load More</Button>}
-                    {isLastPage && <Button onClick={reset}>Show Less</Button>}
+                    {hasMore && (
+                        <Button className="btn--secondary" onClick={next}>
+                            Load More
+                        </Button>
+                    )}
+                    {isLastPage && (
+                        <Button className="btn--secondary" onClick={reset}>
+                            Show Less
+                        </Button>
+                    )}
                 </div>
             )}
         </div>

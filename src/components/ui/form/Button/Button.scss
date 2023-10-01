@@ -9,10 +9,44 @@
     display: flex;
     justify-content: center;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 500;
     gap: 0.5rem;
     line-height: 1.17rem;
-    padding: 0.56rem 0.75rem;
+    padding: 0.56rem 1.25rem;
     text-align: center;
     text-transform: capitalize;
+    cursor: pointer;
+
+    &:hover {
+        background-color: base.$color-secondary-lightest;
+    }
+
+    &:disabled {
+        opacity: 50%;
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+
+    &--active {
+        font-weight: 900;
+        color: base.$color-primary;
+    }
+
+    &--primary {
+        background-color: base.$color-primary;
+        color: base.$bg-white;
+
+        &:hover {
+            background-color: base.$color-primary-darker;
+        }
+    }
+
+    &--secondary {
+        background-color: base.$color-secondary;
+        color: base.$bg-white;
+
+        &:hover {
+            background-color: base.$color-secondary-darker;
+        }
+    }
 }

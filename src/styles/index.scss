@@ -1,3 +1,4 @@
+@use "./_base.scss";
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 
 /*
@@ -23,6 +24,7 @@
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    background-color: base.$color-secondary-lightest;
 }
 /*
   5. Improve media defaults
