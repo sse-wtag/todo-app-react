@@ -7,6 +7,7 @@ import { Button } from "@components/ui/form";
 import { selectFilteredTasks } from "@features/task/taskSelectors";
 import usePaginate from "@hooks/usePaginate";
 import "./TaskList.scss";
+import TaskListEmpty from "@components/TaskListEmpty";
 
 const TASK_PER_PAGE = import.meta.env.VITE_TASK_PER_PAGE;
 
@@ -24,6 +25,7 @@ function TaskList({ isDisabled, isTaskCreating, onTaskCreation }) {
         isCollectionCreating: isTaskCreating,
         perPage: TASK_PER_PAGE,
     });
+    const isEmptyCardShowing = !isTaskCreating && chunkedTasks.length === 0;
 
     const taskCards = chunkedTasks.map((task) => {
         return <TaskCard key={task.id} task={task} isDisabled={isDisabled} />;
@@ -40,7 +42,6 @@ function TaskList({ isDisabled, isTaskCreating, onTaskCreation }) {
                 {isTaskCreating && <CreateTaskCard onTaskCreation={onTaskCreation} />}
                 {taskCards}
             </div>
-
             {(hasMore || isLastPage) && (
                 <div className="task-list__paginate-buttons">
                     {hasMore && (
@@ -55,6 +56,8 @@ function TaskList({ isDisabled, isTaskCreating, onTaskCreation }) {
                     )}
                 </div>
             )}
+
+            <TaskListEmpty isShowing={isEmptyCardShowing} taskState={filterState} />
         </div>
     );
 }
