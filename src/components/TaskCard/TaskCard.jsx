@@ -26,8 +26,7 @@ function TaskCard({ task }) {
 
     return (
         <div
-            className={classNames({
-                "task-card": true,
+            className={classNames("task-card", {
                 "task-card--complete": isCompleted,
             })}
         >
