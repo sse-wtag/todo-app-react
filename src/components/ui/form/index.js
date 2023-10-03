@@ -1,5 +1,5 @@
 import Button from "./Button";
 import TextArea from "./TextArea";
-import TextInput from "./TextInput";
+import Input from "./Input";
 
-export { Button, TextArea, TextInput };
+export { Button, TextArea, Input };
