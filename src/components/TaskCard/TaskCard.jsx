@@ -13,7 +13,7 @@ function TaskCard({ task }) {
     const dispatch = useDispatch();
 
     const currentDate = new Date().toISOString();
-    const dayDifference = compareDates(now, completedAt);
+    const dayDifference = compareDates(currentDate, completedAt);
     const dayDifferenceText = dayDifference === 1 ? "day" : "days";
 
     const handleDelete = () => {
