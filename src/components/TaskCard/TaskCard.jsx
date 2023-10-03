@@ -13,8 +13,8 @@ function TaskCard({ task }) {
     const dispatch = useDispatch();
 
     const currentDate = new Date().toISOString();
-    const dayDifference = compareDates(currentDate, completedAt);
-    const dayDifferenceText = dayDifference === 1 ? "day" : "days";
+    const daysElapsed = compareDates(currentDate, completedAt);
+    const pluralizedDayText = daysElapsed === 1 ? "day" : "days";
 
     const handleDelete = () => {
         dispatch(deleteTask(id));
@@ -46,7 +46,7 @@ function TaskCard({ task }) {
             </div>
             {completedAt && (
                 <span>
-                    Completed in {dayDifference} {dayDifferenceText}
+                    Completed in {daysElapsed === null ? "N/A" : daysElapsed} {pluralizedDayText}
                 </span>
             )}
         </div>
