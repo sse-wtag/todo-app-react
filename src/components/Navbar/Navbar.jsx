@@ -1,4 +1,4 @@
-import { TextInput } from "@components/ui/form";
+import { Input } from "@components/ui/form";
 import "./Navbar.scss";
 
 function Navbar() {
@@ -8,7 +8,7 @@ function Navbar() {
         <nav className="nav">
             <div className="nav__container">
                 <span className="nav__title">Todos</span>
-                <TextInput placeholder={PLACEHOLDER} />
+                <Input placeholder={PLACEHOLDER} />
             </div>
         </nav>
     );
