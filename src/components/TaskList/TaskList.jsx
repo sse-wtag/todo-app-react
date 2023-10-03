@@ -8,7 +8,7 @@ import { Button } from "@components/ui/form";
 
 const TASK_PER_PAGE = import.meta.env.VITE_TASK_PER_PAGE;
 function TaskList({ isTaskCreating, onTaskCreation }) {
-    const tasks = useSelector((state) => state.tasks.tasks);
+    const tasks = useSelector((state) => state.todo.tasks);
     const {
         data: chunkedTasks,
         hasMore,
