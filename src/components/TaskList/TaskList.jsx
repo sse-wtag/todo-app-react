@@ -5,7 +5,7 @@ import CreateTaskCard from "@components/CreateTaskCard";
 import "./TaskList.scss";
 
 function TaskList({ isTaskCreating, onTaskCreation }) {
-    const tasks = useSelector((state) => state.tasks.tasks);
+    const tasks = useSelector((state) => state.todo.tasks);
 
     const taskItems = tasks.map((task) => {
         return <TaskCard key={task.id} task={task} />;

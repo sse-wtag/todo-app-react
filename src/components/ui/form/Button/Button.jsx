@@ -6,8 +6,7 @@ function Button({ children, className, type, ...rest }) {
     return (
         <button
             type={type}
-            className={classNames({
-                btn: true,
+            className={classNames("btn", {
                 [className]: Boolean(className),
             })}
             {...rest}
