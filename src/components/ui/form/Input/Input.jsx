@@ -1,18 +1,18 @@
 import PropTypes from "prop-types";
-import "./TextInput.scss";
+import "./Input.scss";
 
-function TextInput({ className, type, ...rest }) {
+function Input({ className, type, ...rest }) {
     return <input type={type} className={className} {...rest} />;
 }
 
-TextInput.defaultProps = {
-    className: "input-text",
+Input.defaultProps = {
+    className: "input",
     type: "text",
 };
 
-TextInput.propTypes = {
+Input.propTypes = {
     className: PropTypes.string,
     type: PropTypes.string,
 };
 
-export default TextInput;
+export default Input;
