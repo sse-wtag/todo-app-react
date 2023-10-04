@@ -1,7 +1,7 @@
 import { TASK_STATE_COMPLETE, TASK_STATE_INCOMPLETE } from "@helpers/constants";
 import { createSelector } from "@reduxjs/toolkit";
 
-export const selectAllTasks = (state) => state.tasks.tasks;
+export const selectAllTasks = (state) => state.todo.tasks;
 
 export const selectFilteredTasks = createSelector(
     selectAllTasks,
