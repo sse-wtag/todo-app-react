@@ -20,9 +20,9 @@ function TaskCard({ task, isDisabled }) {
     const [isEditing, setIsEditing] = useState(false);
     const [editTitle, setEditTitle] = useState(title);
 
-    const now = new Date().toISOString();
-    const dayDifference = compareDates(now, completedAt);
-    const dayDifferenceText = dayDifference === 1 ? "day" : "days";
+    const currentDate = new Date().toISOString();
+    const daysElapsed = compareDates(currentDate, completedAt);
+    const pluralizedDayText = daysElapsed === 1 ? "day" : "days";
 
     const handleTitleChange = (event) => {
         setEditTitle(event.target.value);
@@ -76,8 +76,7 @@ function TaskCard({ task, isDisabled }) {
 
     return (
         <div
-            className={classNames({
-                "task-card": true,
+            className={classNames("task-card", {
                 "task-card--complete": isCompleted,
                 "task-card--disabled": isDisabled,
             })}
@@ -124,7 +123,7 @@ function TaskCard({ task, isDisabled }) {
                 </div>
                 {completedAt && (
                     <span className="task-card__completed-in">
-                        Completed in {dayDifference} {dayDifferenceText}
+                        Completed in {daysElapsed === null ? "N/A" : daysElapsed} {pluralizedDayText}
                     </span>
                 )}
             </div>

@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import { TextInput } from "@components/ui/form";
+import { Input } from "@components/ui/form";
 import { searchTask } from "@features/filter/filterSlice";
 import { TASK_SEARCH_DELAY_IN_MS } from "@helpers/constants";
 import purify from "@helpers/text/purify";
@@ -13,7 +13,7 @@ function Navbar({ onSearching }) {
     const dispatch = useDispatch();
     const textToSearch = useSelector((state) => state.filter.search);
     const [text, setText] = useState(textToSearch);
-    let typingTimer = null;
+    const typingTimerRef = useRef();
 
     const debouncedDispatch = useDebounce(() => {
         const purifiedText = purify(text);
@@ -24,8 +24,8 @@ function Navbar({ onSearching }) {
     const toggleSearching = () => {
         onSearching(true);
 
-        clearTimeout(typingTimer);
-        typingTimer = setTimeout(() => {
+        clearTimeout(typingTimerRef.current);
+        typingTimerRef.current = setTimeout(() => {
             onSearching(false);
         }, TASK_SEARCH_DELAY_IN_MS);
     };
@@ -42,7 +42,7 @@ function Navbar({ onSearching }) {
         <nav className="nav">
             <div className="nav__container">
                 <span className="nav__title">Todos</span>
-                <TextInput value={text} placeholder={PLACEHOLDER} onChange={handleInputChange} />
+                <Input value={text} placeholder={PLACEHOLDER} onChange={handleInputChange} />
             </div>
         </nav>
     );
