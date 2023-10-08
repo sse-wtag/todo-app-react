@@ -1,18 +1,16 @@
 import PropTypes from "prop-types";
 import "./TextArea.scss";
 
-function TextArea({ className, rows, ...rest }) {
-    return <textarea className={className} rows={rows} {...rest}></textarea>;
+function TextArea({ className, ...rest }) {
+    return <textarea className={className} {...rest}></textarea>;
 }
 
 TextArea.defaultProps = {
-    className: "input-text",
-    rows: 3,
+    className: "input-textarea",
 };
 
 TextArea.propTypes = {
     className: PropTypes.string,
-    rows: PropTypes.number,
 };
 
 export default TextArea;
