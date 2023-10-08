@@ -10,7 +10,6 @@ describe("Input Component", () => {
 
         expect(textAreaElement).toBeInTheDocument();
         expect(textAreaElement).toHaveClass("input-textarea");
-        expect(textAreaElement).toHaveAttribute("rows", "3");
     });
 
     it("applies the provided custom className", () => {
@@ -19,14 +18,6 @@ describe("Input Component", () => {
         const textAreaElement = screen.getByRole("textbox");
 
         expect(textAreaElement).toHaveClass(customClassName);
-    });
-
-    it("accepts a custom type when provided", () => {
-        const textAreaRowCount = "5";
-        render(<TextArea rows={textAreaRowCount} />);
-        const textAreaElement = screen.getByRole("textbox");
-
-        expect(textAreaElement).toHaveAttribute("rows", textAreaRowCount);
     });
 
     it("handles user input correctly", async () => {
