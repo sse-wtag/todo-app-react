@@ -46,6 +46,7 @@
 
     &__input {
         width: 100%;
+        min-height: 5rem;
         height: 100%;
         padding: 0.31rem 0.563rem;
         border: 0.03rem solid base.$color-primary-light;
