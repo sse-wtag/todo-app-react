@@ -12,7 +12,7 @@ export const compareDates = (dateString1, dateString2) => {
 
     const _MS_PER_DAY = 1000 * 60 * 60 * 24;
     const timeDifference = Math.abs(date1 - date2);
-    const daysDifference = Math.ceil(timeDifference / _MS_PER_DAY);
+    const daysDifference = Math.floor(timeDifference / _MS_PER_DAY) + 1;
 
     return daysDifference;
 };
