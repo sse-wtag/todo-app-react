@@ -107,18 +107,18 @@ function TaskCard({ task, isDisabled }) {
                     )}
 
                     {!isCompleted && (
-                        <IconButton onClick={handleMarkAsDone} disabled={isDisabled}>
+                        <IconButton data-testid="btn-mark-as-done" onClick={handleMarkAsDone} disabled={isDisabled}>
                             <CheckIcon />
                         </IconButton>
                     )}
 
                     {!isEditing && !isCompleted && (
-                        <IconButton onClick={handleEditClick} disabled={isDisabled}>
+                        <IconButton data-testid="btn-edit" onClick={handleEditClick} disabled={isDisabled}>
                             <PencilIcon />
                         </IconButton>
                     )}
 
-                    <IconButton onClick={handleDelete} disabled={isDisabled}>
+                    <IconButton data-testid="btn-delete" onClick={handleDelete} disabled={isDisabled}>
                         <TrashIcon />
                     </IconButton>
                 </div>
