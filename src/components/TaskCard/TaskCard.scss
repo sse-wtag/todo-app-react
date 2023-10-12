@@ -33,6 +33,6 @@
 
     &--complete &__title {
         text-decoration: line-through;
-        color: #0bc375;
+        color: base.$color-success;
     }
 }
