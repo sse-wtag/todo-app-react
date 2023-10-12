@@ -4,7 +4,7 @@ function usePaginate({ collection = [], perPage = 5, startIndex = 0, startPage =
     const [currentPage, setCurrentPage] = useState(startPage);
     const [hasMore, setHasMore] = useState(false);
     const [isLastPage, setIsLastPage] = useState(false);
-    const data = collection.slice(startIndex, perPage * currentPage - Number(isCollectionCreating));
+    const data = collection.slice(startIndex, startIndex + perPage * currentPage - Number(isCollectionCreating));
     const collectionLength = collection.length + Number(isCollectionCreating);
     const totalPageCount = Math.ceil(collectionLength / perPage);
 
@@ -28,7 +28,7 @@ function usePaginate({ collection = [], perPage = 5, startIndex = 0, startPage =
     };
 
     const previous = () => {
-        if (currentPage <= startPage) {
+        if (currentPage <= 1) {
             return;
         }
         setCurrentPage((prevPage) => prevPage - 1);
