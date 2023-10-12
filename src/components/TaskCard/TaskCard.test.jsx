@@ -22,7 +22,7 @@ describe("TaskCard component", () => {
         );
 
         expect(getByText("Sample Task")).toBeInTheDocument();
-        expect(getByText("Created At: 10.10.2023")).toBeInTheDocument();
+        expect(getByText("Created At: 10.10.23")).toBeInTheDocument();
 
         expect(getByTestId("btn-mark-as-done")).toBeInTheDocument();
         expect(getByTestId("btn-edit")).toBeInTheDocument();
