@@ -31,13 +31,11 @@ const taskSlice = createSlice({
         },
         updateTask: (state, action) => {
             const { id: editId, editTitle } = action.payload;
-            const taskIndexToUpdate = state.tasks.findIndex((task) => task.id === editId);
+            const taskToEdit = state.tasks.find((task) => task.id === editId);
 
-            if (taskIndexToUpdate === -1) {
-                return;
+            if (taskToEdit) {
+                taskToEdit.title = editTitle;
             }
-
-            state.tasks[taskIndexToUpdate].title = editTitle;
         },
     },
 });
