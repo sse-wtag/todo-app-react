@@ -11,7 +11,7 @@ import "./TaskList.scss";
 const TASK_PER_PAGE = import.meta.env.VITE_TASK_PER_PAGE;
 
 function TaskList({ isTaskCreating, onTaskCreation }) {
-    const { state: filterState } = useSelector((state) => state.filter);
+    const { status: filterState } = useSelector((state) => state.filter);
     const tasks = useSelector((state) => selectFilteredTasks(state, filterState));
     const {
         data: chunkedTasks,

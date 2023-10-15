@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     search: "",
-    state: TASK_STATE_ALL,
+    status: TASK_STATE_ALL,
 };
 
 const filterSlice = createSlice({
@@ -11,7 +11,7 @@ const filterSlice = createSlice({
     initialState,
     reducers: {
         filterTask: (state, action) => {
-            state.state = action.payload;
+            state.status = action.payload;
         },
     },
 });
