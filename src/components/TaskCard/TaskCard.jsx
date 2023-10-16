@@ -23,15 +23,7 @@ function TaskCard({ task, isDisabled }) {
     const daysElapsed = compareDates(currentDate, completedAt);
     const pluralizedDayText = daysElapsed === 1 ? "day" : "days";
 
-    const handleTitleChange = (event) => {
-        setEditTitle(event.target.value);
-    };
-
-    const turnOffEditing = () => {
-        setIsEditing(false);
-    };
-
-    const editTask = () => {
+    const onEditTask = () => {
         const purifiedEditTitle = purify(editTitle);
 
         if (purifiedEditTitle === "") {
@@ -40,25 +32,21 @@ function TaskCard({ task, isDisabled }) {
         }
 
         dispatch(updateTask({ id, editTitle: purifiedEditTitle }));
-        turnOffEditing();
+        setIsEditing(false);
         setEditTitle(purifiedEditTitle);
     };
 
     const handleDelete = () => {
         if (isEditing) {
-            turnOffEditing();
+            setIsEditing(false);
             return;
         }
         dispatch(deleteTask(id));
     };
 
-    const handleEditClick = () => {
-        setIsEditing(true);
-    };
-
     const handleMarkAsDone = () => {
         if (isEditing) {
-            editTask();
+            onEditTask();
         }
         dispatch(markAsDone(id));
     };
@@ -66,7 +54,7 @@ function TaskCard({ task, isDisabled }) {
     const handleTextareaKeyDown = (event) => {
         if (event.key === ENTER_KEY && !event.shiftKey) {
             event.preventDefault();
-            editTask();
+            onEditTask();
         }
     };
 
@@ -80,7 +68,7 @@ function TaskCard({ task, isDisabled }) {
                 <TextArea
                     className="task-card__input"
                     value={editTitle}
-                    onChange={handleTitleChange}
+                    onChange={(event) => setEditTitle(event.target.value)}
                     onKeyUp={handleTextareaKeyDown}
                     disabled={isDisabled}
                 />
@@ -91,7 +79,7 @@ function TaskCard({ task, isDisabled }) {
             <div className="task-card__body">
                 <div className="task-card__actions-wrapper">
                     {isEditing && (
-                        <Button onClick={editTask} disabled={isDisabled}>
+                        <Button onClick={onEditTask} disabled={isDisabled}>
                             Save
                         </Button>
                     )}
@@ -103,7 +91,7 @@ function TaskCard({ task, isDisabled }) {
                     )}
 
                     {!isEditing && !isCompleted && (
-                        <IconButton onClick={handleEditClick} disabled={isDisabled}>
+                        <IconButton onClick={() => setIsEditing(true)} disabled={isDisabled}>
                             <PencilIcon />
                         </IconButton>
                     )}
