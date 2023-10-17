@@ -25,6 +25,10 @@ function TaskCard({ task, isDisabled }) {
     const daysElapsed = compareDates(currentDate, completedAt);
     const pluralizedDayText = daysElapsed === 1 ? "day" : "days";
 
+    const handleTitleChange = (event) => {
+        setEditTitle(event.target.value);
+    };
+
     const onEditTask = () => {
         const purifiedEditTitle = purify(editTitle);
 
@@ -75,7 +79,7 @@ function TaskCard({ task, isDisabled }) {
                     <TextArea
                         className="task-card__input"
                         value={editTitle}
-                        onChange={(event) => setEditTitle(event.target.value)}
+                        onChange={handleTitleChange}
                         onKeyUp={handleTextareaKeyDown}
                         disabled={isDisabled}
                     />
