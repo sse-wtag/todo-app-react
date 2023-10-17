@@ -12,7 +12,7 @@ import "./TaskBoard.scss";
 function TaskBoard({ isSearching }) {
     const dispatch = useDispatch();
     const [isTaskCreating, setIsTaskCreating] = useState(false);
-    const filterState = useSelector((state) => state.filter.state);
+    const filterState = useSelector((state) => state.filter.status);
 
     const toggleCreation = () => {
         setIsTaskCreating((prevIsTaskCreating) => !prevIsTaskCreating);
