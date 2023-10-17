@@ -12,7 +12,7 @@ import TaskListEmpty from "@components/TaskListEmpty";
 const TASK_PER_PAGE = import.meta.env.VITE_TASK_PER_PAGE;
 
 function TaskList({ isDisabled, isTaskCreating, onTaskCreation }) {
-    const { state: filterState, search: textToSearch } = useSelector((state) => state.filter);
+    const { status: filterState, search: textToSearch } = useSelector((state) => state.filter);
     const tasks = useSelector((state) => selectFilteredTasks(state, filterState, textToSearch));
     const {
         data: chunkedTasks,
