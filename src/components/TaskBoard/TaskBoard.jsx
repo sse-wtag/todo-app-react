@@ -16,9 +16,9 @@ function TaskBoard() {
             <div className="task-board__action-wrapper">
                 <Button onClick={toggleCreation}>Create</Button>
                 <div className="task-board__filter-buttons">
-                    <Button>all</Button>
-                    <Button>incomplete</Button>
-                    <Button>complete</Button>
+                    <Button>All</Button>
+                    <Button>Incomplete</Button>
+                    <Button>Complete</Button>
                 </div>
             </div>
 
