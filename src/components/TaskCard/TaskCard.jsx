@@ -34,14 +34,8 @@ function TaskCard({ task }) {
             <span>Created At: {formatDate(createdAt)}</span>
             <div className="task-card__body">
                 <div className="task-card__actions-wrapper">
-                    {!isCompleted && (
-                        <IconButton onClick={handleMarkAsDone}>
-                            <CheckIcon />
-                        </IconButton>
-                    )}
-                    <IconButton onClick={handleDelete}>
-                        <TrashIcon />
-                    </IconButton>
+                    {!isCompleted && <IconButton icon={<CheckIcon />} onClick={handleMarkAsDone} />}
+                    <IconButton icon={<TrashIcon />} onClick={handleDelete} />
                 </div>
             </div>
             {completedAt && (
