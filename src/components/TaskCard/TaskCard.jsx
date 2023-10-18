@@ -47,10 +47,6 @@ function TaskCard({ task }) {
     );
 }
 
-TaskCard.defaultProps = {
-    task: {},
-};
-
 TaskCard.propTypes = {
     task: PropTypes.shape({
         id: PropTypes.string,
