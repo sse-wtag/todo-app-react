@@ -20,9 +20,7 @@ function TaskCard({ task }) {
             <span>Created At: {formatDate(createdAt)}</span>
             <div className="task-card__body">
                 <div className="task-card__actions-wrapper">
-                    <IconButton onClick={handleDelete}>
-                        <TrashIcon />
-                    </IconButton>
+                    <IconButton icon={<TrashIcon />} onClick={handleDelete} />
                 </div>
             </div>
         </div>
