@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TaskList from "@components/TaskList";
-import "./TaskBoard.scss";
 import { Button } from "@components/ui/form";
+import "./TaskBoard.scss";
 
 function TaskBoard() {
     const [isTaskCreating, setIsTaskCreating] = useState(false);
