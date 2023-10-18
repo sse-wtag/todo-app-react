@@ -1,0 +1,10 @@
+@import "@styles/_variables.scss";
+
+.input {
+    background-color: $bg-gray-50;
+    border: 0.06rem solid $bg-gray-300;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding: 0.5rem;
+}

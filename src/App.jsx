@@ -1,5 +1,13 @@
+import Navbar from "@components/Navbar";
+import TaskBoard from "@components/TaskBoard";
+
 function App() {
-    return <h1>Todo App React</h1>;
+    return (
+        <>
+            <Navbar />
+            <TaskBoard />
+        </>
+    );
 }
 
 export default App;
