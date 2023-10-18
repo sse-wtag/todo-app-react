@@ -18,8 +18,19 @@ const taskSlice = createSlice({
 
             state.tasks.splice(deletableTaskIndex, 1);
         },
+        markAsDone: (state, action) => {
+            const taskIdToMarkAsDone = action.payload;
+            const taskIndexToMarkAsDone = state.tasks.findIndex((task) => task.id === taskIdToMarkAsDone);
+
+            if (taskIndexToMarkAsDone === -1) {
+                return;
+            }
+
+            state.tasks[taskIndexToMarkAsDone].isCompleted = true;
+            state.tasks[taskIndexToMarkAsDone].completedAt = new Date().toISOString();
+        },
     },
 });
 
 export default taskSlice.reducer;
-export const { addTask, deleteTask } = taskSlice.actions;
+export const { addTask, deleteTask, markAsDone } = taskSlice.actions;
