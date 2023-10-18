@@ -1,8 +1,8 @@
-@use "@styles/_variables.scss";
+@import "@styles/_variables.scss";
 
 .nav {
-    background-color: variables.$bg-white;
-    border-bottom: 0.06rem solid variables.$secondary-color;
+    background-color: $bg-white;
+    border-bottom: 0.06rem solid $secondary-color;
 
     &__container {
         align-items: center;
@@ -14,7 +14,7 @@
     }
 
     &__title {
-        color: variables.$primary-color;
+        color: $primary-color;
         font-size: 1.5rem;
         font-weight: bold;
         line-height: 2rem;
