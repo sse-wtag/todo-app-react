@@ -13,15 +13,11 @@ function TaskCard({ task }) {
     );
 }
 
-TaskCard.defaultProps = {
-    task: {},
-};
-
 TaskCard.propTypes = {
     task: PropTypes.shape({
         title: PropTypes.string,
         createdAt: PropTypes.string,
-    }),
+    }).isRequired,
 };
 
 export default TaskCard;
