@@ -1,10 +1,10 @@
-@use "@styles/_variables.scss";
+@import "@styles/_variables.scss";
 
 .task-card {
-    background-color: variables.$bg-white;
+    background-color: $bg-white;
     padding: 1rem;
     border-radius: 0.5rem;
-    border: 0.06rem solid variables.$bg-gray-400;
+    border: 0.06rem solid $bg-gray-400;
     min-height: 10rem;
 
     &__title {
@@ -28,6 +28,6 @@
         text-align: start;
         border-radius: 1rem;
         padding: 0.5rem;
-        background-color: variables.$bg-gray-50;
+        background-color: $bg-gray-50;
     }
 }

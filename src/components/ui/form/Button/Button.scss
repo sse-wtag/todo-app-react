@@ -1,11 +1,11 @@
-@use "@styles/_variables.scss";
+@import "@styles/_variables.scss";
 
 .btn {
     align-items: center;
-    background-color: variables.$bg-white;
-    border: 0.06rem solid variables.$bg-gray-400;
+    background-color: $bg-white;
+    border: 0.06rem solid $bg-gray-400;
     border-radius: 0.5rem;
-    color: variables.$bg-slate-700;
+    color: $bg-slate-700;
     display: flex;
     font-size: 0.875rem;
     font-weight: bold;
