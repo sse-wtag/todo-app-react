@@ -1,9 +1,9 @@
-@use "@styles/_variables.scss";
+@import "@styles/_variables.scss";
 
 .task-grid {
     margin-top: 1.5rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 2rem;
-    background-color: variables.$bg-white;
+    background-color: $bg-white;
 }
