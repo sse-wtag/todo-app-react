@@ -25,12 +25,14 @@ function TaskCard({ task }) {
     };
 
     return (
-        <div
-            className={classNames("task-card", {
-                "task-card--complete": isCompleted,
-            })}
-        >
-            <h2 className="task-card__title">{title}</h2>
+        <div className="task-card">
+            <h2
+                className={classNames("task-card__title", {
+                    "task-card__title--complete": isCompleted,
+                })}
+            >
+                {title}
+            </h2>
             <span>Created At: {formatDate(createdAt)}</span>
             <div className="task-card__body">
                 <div className="task-card__actions-wrapper">
