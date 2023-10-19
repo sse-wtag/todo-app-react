@@ -82,22 +82,11 @@ function TaskCard({ task }) {
             <div className="task-card__body">
                 <div className="task-card__actions-wrapper">
                     {isEditing && <Button onClick={onEditTask}>Save</Button>}
-
-                    {!isCompleted && (
-                        <IconButton onClick={handleMarkAsDone}>
-                            <CheckIcon />
-                        </IconButton>
-                    )}
-
+                    {!isCompleted && <IconButton icon={<CheckIcon />} onClick={handleMarkAsDone} />}
                     {!isEditing && !isCompleted && (
-                        <IconButton onClick={() => setIsEditing(true)}>
-                            <PencilIcon />
-                        </IconButton>
+                        <IconButton icon={<PencilIcon />} onClick={() => setIsEditing(true)} />
                     )}
-
-                    <IconButton onClick={handleDelete}>
-                        <TrashIcon />
-                    </IconButton>
+                    <IconButton icon={<TrashIcon />} onClick={handleDelete} />
                 </div>
             </div>
             {completedAt && (
@@ -108,10 +97,6 @@ function TaskCard({ task }) {
         </div>
     );
 }
-
-TaskCard.defaultProps = {
-    task: {},
-};
 
 TaskCard.propTypes = {
     task: PropTypes.shape({

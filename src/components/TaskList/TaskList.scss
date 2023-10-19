@@ -1,4 +1,4 @@
-@use "@styles/_base.scss";
+@import "@styles/_variables.scss";
 
 .task-list {
     margin-top: 1.5rem;
@@ -7,7 +7,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 2rem;
-        background-color: base.$bg-white;
+        background-color: $bg-white;
     }
 
     &__paginate-buttons {

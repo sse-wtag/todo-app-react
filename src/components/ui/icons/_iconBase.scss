@@ -1,7 +1,7 @@
-@use "@styles/_base.scss";
+@import "@styles/_variables.scss";
 
 .icon-base {
     width: 1.5rem;
     height: 1.5rem;
-    fill: base.$bg-gray-400;
+    fill: $bg-gray-400;
 }
