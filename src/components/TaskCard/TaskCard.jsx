@@ -63,11 +63,7 @@ function TaskCard({ task }) {
     };
 
     return (
-        <div
-            className={classNames("task-card", {
-                "task-card--complete": isCompleted,
-            })}
-        >
+        <div className="task-card">
             {isEditing ? (
                 <TextArea
                     className="task-card__input"
@@ -76,28 +72,23 @@ function TaskCard({ task }) {
                     onKeyUp={handleTextareaKeyDown}
                 />
             ) : (
-                <h2 className="task-card__title">{title}</h2>
+                <h2
+                    className={classNames("task-card__title", {
+                        "task-card__title--complete": isCompleted,
+                    })}
+                >
+                    {title}
+                </h2>
             )}
             <span>Created At: {formatDate(createdAt)}</span>
             <div className="task-card__body">
                 <div className="task-card__actions-wrapper">
                     {isEditing && <Button onClick={onEditTask}>Save</Button>}
-
-                    {!isCompleted && (
-                        <IconButton onClick={handleMarkAsDone}>
-                            <CheckIcon />
-                        </IconButton>
-                    )}
-
+                    {!isCompleted && <IconButton icon={<CheckIcon />} onClick={handleMarkAsDone} />}
                     {!isEditing && !isCompleted && (
-                        <IconButton onClick={() => setIsEditing(true)}>
-                            <PencilIcon />
-                        </IconButton>
+                        <IconButton icon={<PencilIcon />} onClick={() => setIsEditing(true)} />
                     )}
-
-                    <IconButton onClick={handleDelete}>
-                        <TrashIcon />
-                    </IconButton>
+                    <IconButton icon={<TrashIcon />} onClick={handleDelete} />
                 </div>
             </div>
             {completedAt && (
@@ -108,10 +99,6 @@ function TaskCard({ task }) {
         </div>
     );
 }
-
-TaskCard.defaultProps = {
-    task: {},
-};
 
 TaskCard.propTypes = {
     task: PropTypes.shape({

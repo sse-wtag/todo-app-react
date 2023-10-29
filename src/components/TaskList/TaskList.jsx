@@ -1,14 +1,17 @@
-import PropTypes from "prop-types";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 import TaskCard from "@components/TaskCard";
 import CreateTaskCard from "@components/CreateTaskCard";
-import "./TaskList.scss";
-import usePaginate from "@hooks/usePaginate";
 import { Button } from "@components/ui/form";
+import { selectFilteredTasks } from "@features/task/taskSelectors";
+import usePaginate from "@hooks/usePaginate";
+import { TASK_PER_PAGE } from "@helpers/constants";
+import "./TaskList.scss";
 
-const TASK_PER_PAGE = import.meta.env.VITE_TASK_PER_PAGE;
 function TaskList({ isTaskCreating, onTaskCreation }) {
-    const tasks = useSelector((state) => state.todo.tasks);
+    const { status: filterState } = useSelector((state) => state.filter);
+    const tasks = useSelector((state) => selectFilteredTasks(state, filterState));
     const {
         data: chunkedTasks,
         hasMore,
@@ -24,6 +27,11 @@ function TaskList({ isTaskCreating, onTaskCreation }) {
     const taskCards = chunkedTasks.map((task) => {
         return <TaskCard key={task.id} task={task} />;
     });
+
+    useEffect(() => {
+        reset();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [filterState]);
 
     return (
         <div className="task-list">
