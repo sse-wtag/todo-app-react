@@ -1,16 +1,21 @@
-@use "@styles/_base.scss";
+@import "@styles/_variables.scss";
 
 .task-card {
-    background-color: base.$bg-white;
+    background-color: $bg-white;
     padding: 1rem;
     border-radius: 0.5rem;
-    border: 0.06rem solid base.$bg-gray-400;
+    border: 0.06rem solid $bg-gray-400;
     min-height: 10rem;
 
     &__title {
         font-size: 1.2rem;
         font-weight: bold;
         line-height: 2rem;
+
+        &--complete {
+            text-decoration: line-through;
+            color: $color-success;
+        }
     }
 
     &__body {
@@ -28,11 +33,6 @@
         text-align: start;
         border-radius: 1rem;
         padding: 0.5rem;
-        background-color: base.$bg-gray-50;
-    }
-
-    &--complete &__title {
-        text-decoration: line-through;
-        color: base.$color-success;
+        background-color: $bg-gray-50;
     }
 }
