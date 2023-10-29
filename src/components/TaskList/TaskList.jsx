@@ -3,18 +3,41 @@ import { useSelector } from "react-redux";
 import TaskCard from "@components/TaskCard";
 import CreateTaskCard from "@components/CreateTaskCard";
 import "./TaskList.scss";
+import usePaginate from "@hooks/usePaginate";
+import { Button } from "@components/ui/form";
+import { TASK_PER_PAGE } from "@helpers/constants";
 
 function TaskList({ isTaskCreating, onTaskCreation }) {
     const tasks = useSelector((state) => state.todo.tasks);
+    const {
+        data: chunkedTasks,
+        hasMore,
+        isLastPage,
+        next,
+        reset,
+    } = usePaginate({
+        collection: tasks,
+        isCollectionCreating: isTaskCreating,
+        perPage: TASK_PER_PAGE,
+    });
 
-    const taskItems = tasks.map((task) => {
+    const taskCards = chunkedTasks.map((task) => {
         return <TaskCard key={task.id} task={task} />;
     });
 
     return (
-        <div className="task-grid">
-            {isTaskCreating && <CreateTaskCard onTaskCreation={onTaskCreation} />}
-            {taskItems}
+        <div className="task-list">
+            <div className="task-list__grid">
+                {isTaskCreating && <CreateTaskCard onTaskCreation={onTaskCreation} />}
+                {taskCards}
+            </div>
+
+            {(hasMore || isLastPage) && (
+                <div className="task-list__paginate-buttons">
+                    {hasMore && <Button onClick={next}>Load More</Button>}
+                    {isLastPage && <Button onClick={reset}>Show Less</Button>}
+                </div>
+            )}
         </div>
     );
 }

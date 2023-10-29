@@ -1,4 +1,5 @@
 import CheckIcon from "./CheckIcon";
+import PencilIcon from "./PencilIcon";
 import TrashIcon from "./TrashIcon";
 
-export { CheckIcon, TrashIcon };
+export { CheckIcon, PencilIcon, TrashIcon };

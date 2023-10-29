@@ -1,9 +1,21 @@
 @import "@styles/_variables.scss";
 
-.task-grid {
+.task-list {
     margin-top: 1.5rem;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 2rem;
-    background-color: $bg-white;
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+        background-color: $bg-white;
+    }
+
+    &__paginate-buttons {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
