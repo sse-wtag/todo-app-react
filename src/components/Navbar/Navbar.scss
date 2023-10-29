@@ -1,8 +1,8 @@
-@use "@styles/_base.scss";
+@import "@styles/_variables.scss";
 
 .nav {
-    background-color: base.$bg-white;
-    border-bottom: 0.06rem solid base.$color-primary-light;
+    background-color: $bg-white;
+    border-bottom: 0.06rem solid $color-primary-light;
     padding: 1rem 2rem;
 
     &__container {
@@ -26,7 +26,7 @@
     }
 
     &__logo-text {
-        color: base.$color-primary;
+        color: $color-primary;
         font-size: 2.25rem;
         font-weight: 700;
         line-height: 2.63rem;
@@ -43,7 +43,7 @@
     &__search-box-input {
         width: 100%;
         padding: 0.56rem 0.75rem;
-        border: 0.03rem solid base.$color-primary-light;
+        border: 0.03rem solid $color-primary-light;
         border-radius: 0.31rem;
         font-size: 1rem;
         font-weight: 500;
@@ -51,12 +51,12 @@
 
         &:focus {
             outline-width: 0.18rem;
-            outline-color: base.$color-primary-light;
+            outline-color: $color-primary-light;
         }
     }
 }
 
-@media (max-width: base.$screen-mobile) {
+@media (max-width: $screen-mobile) {
     .nav {
         padding-left: 1.5rem;
         padding-right: 1.5rem;

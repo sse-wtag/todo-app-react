@@ -1,12 +1,12 @@
-@use "@styles/_base.scss";
+@import "@styles/_variables.scss";
 
 .task-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
-    background-color: base.$bg-white;
-    border: 0.06rem solid base.$color-primary-light;
+    background-color: $bg-white;
+    border: 0.06rem solid $color-primary-light;
     border-radius: 0.31rem;
     gap: 1.5rem;
 
@@ -18,15 +18,20 @@
         font-size: 1.5rem;
         font-weight: 700;
         line-height: 1.75rem;
-        color: base.$color-secondary;
+        color: $color-secondary;
         margin-bottom: 0.563rem;
+
+        &--complete {
+            text-decoration: line-through;
+            color: $color-success;
+        }
     }
 
     &__created-date {
         font-size: 0.875rem;
         font-weight: 700;
         line-height: 1rem;
-        color: base.$color-secondary-light;
+        color: $color-secondary-light;
     }
 
     &__body {
@@ -49,9 +54,9 @@
         min-height: 5rem;
         height: 100%;
         padding: 0.31rem 0.563rem;
-        border: 0.03rem solid base.$color-primary-light;
+        border: 0.03rem solid $color-primary-light;
         border-radius: 0.31rem;
-        color: base.$color-secondary;
+        color: $color-secondary;
         font-size: 1rem;
         font-weight: 500;
         text-align: start;
@@ -60,22 +65,17 @@
 
     &__input:focus {
         outline-width: 0.18rem;
-        outline-color: base.$color-primary-light;
+        outline-color: $color-primary-light;
     }
 
     &__completed-in {
-        background-color: base.$color-primary;
+        background-color: $color-primary;
         border-radius: 0.31rem;
         padding: 0.31rem 0.75rem;
-        color: base.$bg-white;
+        color: $bg-white;
         font-weight: 700;
         font-size: 0.75rem;
         line-height: 0.875rem;
-    }
-
-    &--complete &__title {
-        text-decoration: line-through;
-        color: base.$color-success;
     }
 
     &--disabled {
@@ -85,7 +85,7 @@
     }
 }
 
-@media (max-width: base.$screen-mobile) {
+@media (max-width: $screen-mobile) {
     .task-card {
         &__body {
             gap: 0.8rem;

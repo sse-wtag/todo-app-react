@@ -1,4 +1,4 @@
-@use "@styles/_base.scss";
+@import "@styles/_variables.scss";
 
 .toast-success-message {
     &__wrapper {
@@ -11,11 +11,11 @@
     &__icon {
         width: 0.75rem;
         height: 0.75rem;
-        fill: base.$bg-white;
+        fill: $bg-white;
     }
 
     &__message {
-        color: base.$bg-white;
+        color: $bg-white;
         font-weight: 700;
         word-break: keep-all;
     }

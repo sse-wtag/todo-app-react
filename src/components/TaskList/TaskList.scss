@@ -1,4 +1,4 @@
-@use "@styles/_base.scss";
+@import "@styles/_variables.scss";
 
 .task-list {
     margin-top: 2.12rem;
@@ -38,11 +38,11 @@
         font-size: 1.5rem;
         line-height: 1.75rem;
         font-weight: 700;
-        color: base.$color-secondary;
+        color: $color-secondary;
     }
 }
 
-@media (max-width: base.$screen-mobile) {
+@media (max-width: $screen-mobile) {
     .task-list {
         &__grid {
             grid-template-columns: repeat(1, 1fr);
@@ -59,7 +59,7 @@
     }
 }
 
-@media (min-width: base.$screen-tablet) {
+@media (min-width: $screen-tablet) {
     .task-list {
         &__grid {
             grid-template-columns: repeat(2, 1fr);
@@ -67,7 +67,7 @@
     }
 }
 
-@media (min-width: base.$screen-desktop) {
+@media (min-width: $screen-desktop) {
     .task-list {
         &__grid {
             grid-template-columns: repeat(3, 1fr);
