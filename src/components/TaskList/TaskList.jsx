@@ -6,9 +6,8 @@ import CreateTaskCard from "@components/CreateTaskCard";
 import { Button } from "@components/ui/form";
 import { selectFilteredTasks } from "@features/task/taskSelectors";
 import usePaginate from "@hooks/usePaginate";
+import { TASK_PER_PAGE } from "@helpers/constants";
 import "./TaskList.scss";
-
-const TASK_PER_PAGE = import.meta.env.VITE_TASK_PER_PAGE;
 
 function TaskList({ isTaskCreating, onTaskCreation }) {
     const { status: filterState } = useSelector((state) => state.filter);
