@@ -20,14 +20,12 @@ const taskSlice = createSlice({
         },
         markAsDone: (state, action) => {
             const taskIdToMarkAsDone = action.payload;
-            const taskIndexToMarkAsDone = state.tasks.findIndex((task) => task.id === taskIdToMarkAsDone);
+            const taskToMarkAsDone = state.tasks.find((task) => task.id === taskIdToMarkAsDone);
 
-            if (taskIndexToMarkAsDone === -1) {
-                return;
+            if (taskToMarkAsDone) {
+                taskToMarkAsDone.isCompleted = true;
+                taskToMarkAsDone.completedAt = new Date().toISOString();
             }
-
-            state.tasks[taskIndexToMarkAsDone].isCompleted = true;
-            state.tasks[taskIndexToMarkAsDone].completedAt = new Date().toISOString();
         },
         updateTask: (state, action) => {
             const { id: editId, editTitle } = action.payload;

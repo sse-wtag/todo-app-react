@@ -61,9 +61,11 @@ function Navbar({ onSearching }) {
                             onChange={handleInputChange}
                         />
                     )}
-                    <IconButton data-testid="toggle-search-button" onClick={handleToggleSearchbox}>
-                        <MagnifierIcon />
-                    </IconButton>
+                    <IconButton
+                        data-testid="toggle-search-button"
+                        icon={<MagnifierIcon />}
+                        onClick={handleToggleSearchbox}
+                    />
                 </div>
             </div>
         </nav>
