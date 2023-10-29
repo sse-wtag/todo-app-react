@@ -1,11 +1,11 @@
-@use "@styles/_base.scss";
+@import "@styles/_variables.scss";
 
 .btn {
     align-items: center;
-    background-color: base.$bg-white;
-    border: 0.06rem solid base.$color-primary-light;
+    background-color: $bg-white;
+    border: 0.06rem solid $color-primary-light;
     border-radius: 0.31rem;
-    color: base.$color-secondary;
+    color: $color-secondary;
     display: flex;
     justify-content: center;
     font-size: 1rem;
@@ -14,5 +14,4 @@
     line-height: 1.17rem;
     padding: 0.56rem 0.75rem;
     text-align: center;
-    text-transform: capitalize;
 }

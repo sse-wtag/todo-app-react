@@ -69,7 +69,6 @@ function TaskCard({ task, isDisabled }) {
     return (
         <div
             className={classNames("task-card", {
-                "task-card--complete": isCompleted,
                 "task-card--disabled": isDisabled,
             })}
         >
@@ -84,7 +83,13 @@ function TaskCard({ task, isDisabled }) {
                     />
                 ) : (
                     <>
-                        <h2 className="task-card__title">{title}</h2>
+                        <h2
+                            className={classNames("task-card__title", {
+                                "task-card__title--complete": isCompleted,
+                            })}
+                        >
+                            {title}
+                        </h2>
                         <span className="task-card__created-date">Created At: {formatDate(createdAt)}</span>
                     </>
                 )}
@@ -96,22 +101,13 @@ function TaskCard({ task, isDisabled }) {
                             Save
                         </Button>
                     )}
-
                     {!isCompleted && (
-                        <IconButton onClick={handleMarkAsDone} disabled={isDisabled}>
-                            <CheckIcon />
-                        </IconButton>
+                        <IconButton icon={<CheckIcon />} onClick={handleMarkAsDone} disabled={isDisabled} />
                     )}
-
                     {!isEditing && !isCompleted && (
-                        <IconButton onClick={() => setIsEditing(true)} disabled={isDisabled}>
-                            <PencilIcon />
-                        </IconButton>
+                        <IconButton icon={<PencilIcon />} onClick={() => setIsEditing(true)} disabled={isDisabled} />
                     )}
-
-                    <IconButton onClick={handleDelete} disabled={isDisabled}>
-                        <TrashIcon />
-                    </IconButton>
+                    <IconButton icon={<TrashIcon />} onClick={handleDelete} disabled={isDisabled} />
                 </div>
                 {completedAt && (
                     <span className="task-card__completed-in">
@@ -122,11 +118,6 @@ function TaskCard({ task, isDisabled }) {
         </div>
     );
 }
-
-TaskCard.defaultProps = {
-    isDisabled: false,
-    task: {},
-};
 
 TaskCard.propTypes = {
     isDisabled: PropTypes.bool,
