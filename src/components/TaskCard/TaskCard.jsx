@@ -63,11 +63,7 @@ function TaskCard({ task }) {
     };
 
     return (
-        <div
-            className={classNames("task-card", {
-                "task-card--complete": isCompleted,
-            })}
-        >
+        <div className="task-card">
             {isEditing ? (
                 <TextArea
                     className="task-card__input"
@@ -76,7 +72,13 @@ function TaskCard({ task }) {
                     onKeyUp={handleTextareaKeyDown}
                 />
             ) : (
-                <h2 className="task-card__title">{title}</h2>
+                <h2
+                    className={classNames("task-card__title", {
+                        "task-card__title--complete": isCompleted,
+                    })}
+                >
+                    {title}
+                </h2>
             )}
             <span>Created At: {formatDate(createdAt)}</span>
             <div className="task-card__body">
