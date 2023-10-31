@@ -31,9 +31,9 @@ function Navbar({ onSearch }) {
     };
 
     const handleInputChange = (event) => {
-        const textToSearch = event.target.value;
+        const searchInput = event.target.value;
 
-        setText(textToSearch);
+        setText(searchInput);
         debouncedDispatch();
         toggleSearching();
     };
