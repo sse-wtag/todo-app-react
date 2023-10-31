@@ -7,7 +7,7 @@ function App() {
 
     return (
         <>
-            <Navbar onSearching={setIsSearching} />
+            <Navbar onSearch={setIsSearching} />
             <TaskBoard isSearching={isSearching} />
         </>
     );

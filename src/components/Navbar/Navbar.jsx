@@ -8,7 +8,7 @@ import purify from "@helpers/text/purify";
 import useDebounce from "@hooks/useDebounce";
 import "./Navbar.scss";
 
-function Navbar({ onSearching }) {
+function Navbar({ onSearch }) {
     const PLACEHOLDER = "Search...";
     const dispatch = useDispatch();
     const textToSearch = useSelector((state) => state.filter.search);
@@ -22,11 +22,11 @@ function Navbar({ onSearching }) {
     });
 
     const toggleSearching = () => {
-        onSearching(true);
+        onSearch(true);
 
         clearTimeout(typingTimerRef.current);
         typingTimerRef.current = setTimeout(() => {
-            onSearching(false);
+            onSearch(false);
         }, TASK_SEARCH_DELAY_IN_MS);
     };
 
@@ -49,7 +49,7 @@ function Navbar({ onSearching }) {
 }
 
 Navbar.propTypes = {
-    onSearching: PropTypes.func.isRequired,
+    onSearch: PropTypes.func.isRequired,
 };
 
 export default Navbar;
