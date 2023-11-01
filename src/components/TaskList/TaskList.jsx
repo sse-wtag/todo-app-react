@@ -9,9 +9,10 @@ import usePaginate from "@hooks/usePaginate";
 import { TASK_PER_PAGE } from "@helpers/constants";
 import "./TaskList.scss";
 
-function TaskList({ isTaskCreating, onTaskCreation }) {
-    const { status: filterState } = useSelector((state) => state.filter);
-    const tasks = useSelector((state) => selectFilteredTasks(state, filterState));
+function TaskList({ isDisabled, isTaskCreating, onTaskCreation }) {
+    const { status: filterState, search: textToSearch } = useSelector((state) => state.filter);
+    const tasks = useSelector((state) => selectFilteredTasks(state, filterState, textToSearch));
+
     const {
         data: chunkedTasks,
         hasMore,
@@ -25,13 +26,13 @@ function TaskList({ isTaskCreating, onTaskCreation }) {
     });
 
     const taskCards = chunkedTasks.map((task) => {
-        return <TaskCard key={task.id} task={task} />;
+        return <TaskCard key={task.id} task={task} isDisabled={isDisabled} />;
     });
 
     useEffect(() => {
         reset();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [filterState]);
+    }, [filterState, textToSearch]);
 
     return (
         <div className="task-list">
@@ -50,7 +51,12 @@ function TaskList({ isTaskCreating, onTaskCreation }) {
     );
 }
 
+TaskList.defaultProps = {
+    isDisabled: false,
+};
+
 TaskList.propTypes = {
+    isDisabled: PropTypes.bool,
     isTaskCreating: PropTypes.bool.isRequired,
     onTaskCreation: PropTypes.func.isRequired,
 };

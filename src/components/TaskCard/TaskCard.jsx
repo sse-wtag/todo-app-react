@@ -12,7 +12,7 @@ import { compareDates } from "@helpers/operations/compareDates";
 import purify from "@helpers/text/purify";
 import "@components/TaskCard/TaskCard.scss";
 
-function TaskCard({ task }) {
+function TaskCard({ task, isDisabled }) {
     const { id, title, createdAt, isCompleted, completedAt } = task;
     const dispatch = useDispatch();
 
@@ -70,6 +70,7 @@ function TaskCard({ task }) {
                     value={editTitle}
                     onChange={handleTitleChange}
                     onKeyUp={handleTextareaKeyDown}
+                    disabled={isDisabled}
                 />
             ) : (
                 <h2
@@ -83,12 +84,18 @@ function TaskCard({ task }) {
             <span>Created At: {formatDate(createdAt)}</span>
             <div className="task-card__body">
                 <div className="task-card__actions-wrapper">
-                    {isEditing && <Button onClick={onEditTask}>Save</Button>}
-                    {!isCompleted && <IconButton icon={<CheckIcon />} onClick={handleMarkAsDone} />}
-                    {!isEditing && !isCompleted && (
-                        <IconButton icon={<PencilIcon />} onClick={() => setIsEditing(true)} />
+                    {isEditing && (
+                        <Button onClick={onEditTask} disabled={isDisabled}>
+                            Save
+                        </Button>
                     )}
-                    <IconButton icon={<TrashIcon />} onClick={handleDelete} />
+                    {!isCompleted && (
+                        <IconButton icon={<CheckIcon />} onClick={handleMarkAsDone} disabled={isDisabled} />
+                    )}
+                    {!isEditing && !isCompleted && (
+                        <IconButton icon={<PencilIcon />} onClick={() => setIsEditing(true)} disabled={isDisabled} />
+                    )}
+                    <IconButton icon={<TrashIcon />} onClick={handleDelete} disabled={isDisabled} />
                 </div>
             </div>
             {completedAt && (
@@ -101,6 +108,7 @@ function TaskCard({ task }) {
 }
 
 TaskCard.propTypes = {
+    isDisabled: PropTypes.bool,
     task: PropTypes.shape({
         id: PropTypes.string,
         title: PropTypes.string,

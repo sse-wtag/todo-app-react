@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
 import TaskList from "@components/TaskList";
 import { Button } from "@components/ui/form";
+import { SpinnerIcon } from "@components/ui/icons";
 import { filterTask } from "@features/filter/filterSlice";
 import { TASK_STATE_ALL, TASK_STATE_COMPLETE, TASK_STATE_INCOMPLETE } from "@helpers/constants";
 import "./TaskBoard.scss";
@@ -9,6 +11,7 @@ import "./TaskBoard.scss";
 function TaskBoard() {
     const dispatch = useDispatch();
     const [isTaskCreating, setIsTaskCreating] = useState(false);
+    const isSearching = useSelector((state) => state.filter.isSearching);
 
     const toggleCreation = () => {
         setIsTaskCreating((prevIsTaskCreating) => !prevIsTaskCreating);
@@ -22,17 +25,39 @@ function TaskBoard() {
         <section className="task-board">
             <h1 className="task-board__heading">Add Tasks</h1>
             <div className="task-board__action-wrapper">
-                <Button onClick={toggleCreation}>Create</Button>
+                <Button disabled={isSearching} onClick={toggleCreation}>
+                    Create
+                </Button>
                 <div className="task-board__filter-buttons">
-                    <Button onClick={() => handleFilterClick(TASK_STATE_ALL)}>{TASK_STATE_ALL}</Button>
-                    <Button onClick={() => handleFilterClick(TASK_STATE_INCOMPLETE)}>{TASK_STATE_INCOMPLETE}</Button>
-                    <Button onClick={() => handleFilterClick(TASK_STATE_COMPLETE)}>{TASK_STATE_COMPLETE}</Button>
+                    <Button disabled={isSearching} onClick={() => handleFilterClick(TASK_STATE_ALL)}>
+                        {TASK_STATE_ALL}
+                    </Button>
+                    <Button disabled={isSearching} onClick={() => handleFilterClick(TASK_STATE_INCOMPLETE)}>
+                        {TASK_STATE_INCOMPLETE}
+                    </Button>
+                    <Button disabled={isSearching} onClick={() => handleFilterClick(TASK_STATE_COMPLETE)}>
+                        {TASK_STATE_COMPLETE}
+                    </Button>
                 </div>
             </div>
 
-            <TaskList isTaskCreating={isTaskCreating} onTaskCreation={toggleCreation} />
+            <TaskList isDisabled={isSearching} isTaskCreating={isTaskCreating} onTaskCreation={toggleCreation} />
+
+            {isSearching && (
+                <div className="task-board__loader-wrapper">
+                    <SpinnerIcon className="task-board__loader" />
+                </div>
+            )}
         </section>
     );
 }
+
+TaskBoard.defaultProps = {
+    isSearching: false,
+};
+
+TaskBoard.propTypes = {
+    isSearching: PropTypes.bool,
+};
 
 export default TaskBoard;
