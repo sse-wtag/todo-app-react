@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import TaskList from "@components/TaskList";
 import { Button } from "@components/ui/form";
@@ -8,9 +8,10 @@ import { filterTask } from "@features/filter/filterSlice";
 import { TASK_STATE_ALL, TASK_STATE_COMPLETE, TASK_STATE_INCOMPLETE } from "@helpers/constants";
 import "./TaskBoard.scss";
 
-function TaskBoard({ isSearching }) {
+function TaskBoard() {
     const dispatch = useDispatch();
     const [isTaskCreating, setIsTaskCreating] = useState(false);
+    const isSearching = useSelector((state) => state.filter.isSearching);
 
     const toggleCreation = () => {
         setIsTaskCreating((prevIsTaskCreating) => !prevIsTaskCreating);
