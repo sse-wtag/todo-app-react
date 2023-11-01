@@ -1,44 +1,37 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import PropTypes from "prop-types";
 import { Input } from "@components/ui/form";
 import { LeafIcon, MagnifierIcon } from "@components/ui/icons";
-import { searchTask } from "@features/filter/filterSlice";
-import { TASK_SEARCH_DELAY_IN_MS } from "@helpers/constants";
+import { searchTask, setSearching } from "@features/filter/filterSlice";
 import purify from "@helpers/text/purify";
 import useDebounce from "@hooks/useDebounce";
-import "./Navbar.scss";
 import IconButton from "@components/ui/form/IconButton";
+import "./Navbar.scss";
 
-function Navbar({ onSearching }) {
+function Navbar() {
     const PLACEHOLDER = "Search...";
     const [isSearchboxShowing, setIsSearchboxShowing] = useState(false);
     const dispatch = useDispatch();
     const textToSearch = useSelector((state) => state.filter.search);
+    const isSearching = useSelector((state) => state.filter.isSearching);
     const [text, setText] = useState(textToSearch);
-    const typingTimerRef = useRef();
 
     const debouncedDispatch = useDebounce(() => {
         const purifiedText = purify(text);
 
         dispatch(searchTask(purifiedText));
+        dispatch(setSearching(false));
     });
 
-    const toggleSearching = () => {
-        onSearching(true);
-
-        clearTimeout(typingTimerRef.current);
-        typingTimerRef.current = setTimeout(() => {
-            onSearching(false);
-        }, TASK_SEARCH_DELAY_IN_MS);
-    };
-
     const handleInputChange = (event) => {
-        const textToSearch = event.target.value;
+        const searchInput = event.target.value;
+        setText(searchInput);
 
-        setText(textToSearch);
+        if (!isSearching) {
+            dispatch(setSearching(true));
+        }
+
         debouncedDispatch();
-        toggleSearching();
     };
 
     const handleToggleSearchbox = () => {
@@ -67,9 +60,5 @@ function Navbar({ onSearching }) {
         </nav>
     );
 }
-
-Navbar.propTypes = {
-    onSearching: PropTypes.func.isRequired,
-};
 
 export default Navbar;
