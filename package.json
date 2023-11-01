@@ -11,12 +11,13 @@
         "preview": "vite preview"
     },
     "engines": {
-        "node": "16.x",
-        "npm": "8.19.x",
+        "node": "18.x",
+        "npm": "9.8.x",
         "yarn": "1.22.x"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^1.9.5",
+        "@supabase/supabase-js": "^2.38.4",
         "classnames": "^2.3.2",
         "dompurify": "^3.0.5",
         "prop-types": "^15.8.1",
