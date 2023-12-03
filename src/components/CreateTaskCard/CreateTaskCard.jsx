@@ -7,6 +7,7 @@ import { ENTER_KEY } from "@helpers/constants";
 import purify from "@helpers/text/purify";
 import { displayToaster } from "@helpers/utility/toaster";
 import "@components/TaskCard/TaskCard.scss";
+import SuccessToasterMessage from "@components/ui/toaster/SuccessMessage";
 
 function CreateTaskCard({ onTaskCreation }) {
     const dispatch = useDispatch();
@@ -40,7 +41,7 @@ function CreateTaskCard({ onTaskCreation }) {
         dispatch(addTask(newTask));
         resetInput();
         onTaskCreation();
-        displayToaster("Task is created", "success");
+        displayToaster(<SuccessToasterMessage />, "success");
     };
 
     const handleTextareaKeyDown = (event) => {

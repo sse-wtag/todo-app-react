@@ -8,6 +8,7 @@ import { selectFilteredTasks } from "@features/task/taskSelectors";
 import usePaginate from "@hooks/usePaginate";
 import { TASK_PER_PAGE } from "@helpers/constants";
 import "./TaskList.scss";
+import TaskListEmpty from "@components/TaskListEmpty";
 
 function TaskList({ isDisabled, isTaskCreating, onTaskCreation }) {
     const { status: filterState, search: textToSearch } = useSelector((state) => state.filter);
@@ -24,6 +25,7 @@ function TaskList({ isDisabled, isTaskCreating, onTaskCreation }) {
         isCollectionCreating: isTaskCreating,
         perPage: TASK_PER_PAGE,
     });
+    const isEmptyCardShowing = !isTaskCreating && chunkedTasks.length === 0;
 
     const taskCards = chunkedTasks.map((task) => {
         return <TaskCard key={task.id} task={task} isDisabled={isDisabled} />;
@@ -40,13 +42,22 @@ function TaskList({ isDisabled, isTaskCreating, onTaskCreation }) {
                 {isTaskCreating && <CreateTaskCard onTaskCreation={onTaskCreation} />}
                 {taskCards}
             </div>
-
             {(hasMore || isLastPage) && (
                 <div className="task-list__paginate-buttons">
-                    {hasMore && <Button onClick={next}>Load More</Button>}
-                    {isLastPage && <Button onClick={reset}>Show Less</Button>}
+                    {hasMore && (
+                        <Button className="btn--secondary" onClick={next}>
+                            Load More
+                        </Button>
+                    )}
+                    {isLastPage && (
+                        <Button className="btn--secondary" onClick={reset}>
+                            Show Less
+                        </Button>
+                    )}
                 </div>
             )}
+
+            <TaskListEmpty isShowing={isEmptyCardShowing} taskState={filterState} />
         </div>
     );
 }

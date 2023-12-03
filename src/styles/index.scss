@@ -1,3 +1,4 @@
+@import "@styles/_variables.scss";
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 
 /*
@@ -23,6 +24,7 @@
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    background-color: $color-secondary-lightest;
 }
 /*
   5. Improve media defaults
@@ -63,4 +65,33 @@ h6 {
 #root,
 #__next {
     isolation: isolate;
+}
+
+/* Toastify */
+.toastify-success-icon {
+    width: 0.75rem;
+    height: 0.75rem;
+    fill: $bg-white;
+}
+.Toastify__toast-container {
+    min-width: 24rem;
+    text-align: center;
+    margin-top: 4.5rem;
+}
+
+.Toastify__toast {
+    padding: 1rem 3.125rem;
+}
+
+.Toastify__toast-body {
+    width: fit-content;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--success {
+    background-color: $color-success;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--error {
+    background-color: $color-error;
+    font-weight: 700;
 }

@@ -3,12 +3,14 @@ import { toast } from "react-toastify";
 const toastOptions = {
     position: "top-center",
     autoClose: 3000,
-    hideProgressBar: false,
+    hideProgressBar: true,
+    closeButton: false,
     closeOnClick: true,
     pauseOnHover: false,
     draggable: true,
     progress: undefined,
-    theme: "light",
+    theme: "colored",
+    icon: false,
 };
 
 export function displayToaster(message, type) {
