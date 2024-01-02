@@ -5,6 +5,7 @@ import { Button, TextArea } from "@components/ui/form";
 import { addTask } from "@features/task/taskSlice";
 import { ENTER_KEY } from "@helpers/constants";
 import purify from "@helpers/text/purify";
+import { displayToaster } from "@helpers/utility/toaster";
 import "@components/TaskCard/TaskCard.scss";
 
 function CreateTaskCard({ onTaskCreation }) {
@@ -39,6 +40,7 @@ function CreateTaskCard({ onTaskCreation }) {
         dispatch(addTask(newTask));
         resetInput();
         onTaskCreation();
+        displayToaster("Task is created", "success");
     };
 
     const handleTextareaKeyDown = (event) => {

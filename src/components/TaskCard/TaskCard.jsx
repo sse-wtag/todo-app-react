@@ -10,6 +10,7 @@ import { ENTER_KEY } from "@helpers/constants";
 import formatDate from "@helpers/formatting/formatDate";
 import { compareDates } from "@helpers/operations/compareDates";
 import purify from "@helpers/text/purify";
+import { displayToaster } from "@helpers/utility/toaster";
 import "@components/TaskCard/TaskCard.scss";
 
 function TaskCard({ task, isDisabled }) {
@@ -38,6 +39,7 @@ function TaskCard({ task, isDisabled }) {
         dispatch(updateTask({ id, editTitle: purifiedEditTitle }));
         setIsEditing(false);
         setEditTitle(purifiedEditTitle);
+        displayToaster("Task is updated", "success");
     };
 
     const handleDelete = () => {
@@ -46,6 +48,7 @@ function TaskCard({ task, isDisabled }) {
             return;
         }
         dispatch(deleteTask(id));
+        displayToaster("Task is deleted", "error");
     };
 
     const handleMarkAsDone = () => {
@@ -53,6 +56,7 @@ function TaskCard({ task, isDisabled }) {
             onEditTask();
         }
         dispatch(markAsDone(id));
+        displayToaster("Task is marked as done", "success");
     };
 
     const handleTextareaKeyDown = (event) => {
