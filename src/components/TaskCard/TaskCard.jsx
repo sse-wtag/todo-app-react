@@ -103,12 +103,28 @@ function TaskCard({ task, isDisabled }) {
                         </Button>
                     )}
                     {!isCompleted && (
-                        <IconButton icon={<CheckIcon />} onClick={handleMarkAsDone} disabled={isDisabled} />
+                        <IconButton
+                            data-testid="btn-mark-as-done"
+                            icon={<CheckIcon />}
+                            onClick={handleMarkAsDone}
+                            disabled={isDisabled}
+                        />
                     )}
                     {!isEditing && !isCompleted && (
-                        <IconButton icon={<PencilIcon />} onClick={() => setIsEditing(true)} disabled={isDisabled} />
+                        <IconButton
+                            data-testid="btn-edit"
+                            icon={<PencilIcon />}
+                            onClick={() => setIsEditing(true)}
+                            disabled={isDisabled}
+                        />
                     )}
-                    <IconButton icon={<TrashIcon />} onClick={handleDelete} disabled={isDisabled} />
+
+                    <IconButton
+                        data-testid="btn-delete"
+                        icon={<TrashIcon />}
+                        onClick={handleDelete}
+                        disabled={isDisabled}
+                    />
                 </div>
                 {completedAt && (
                     <span className="task-card__completed-in">
